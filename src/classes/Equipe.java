@@ -53,8 +53,20 @@ public class Equipe implements OperacoesComuns{
 		System.out.printf("Digite a modalidade da Equipe: ");
 		this.modalidade = Utils.entrada.nextLine();
 		
+		System.out.println("Escolha um comitê para adicionar sua equipe!");
+		System.out.println("Comitês disponíveis:");
+		int i = 0;
+		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+			System.out.printf("[%d] %s\n",i,comite.getNome());
+    		i++;
+		}
+		
+		i = Utils.entrada.nextInt();
+		
+		ComiteOlimpico.getLista_comites().get(i).getEquipe().add(this);
+		
 		while (true) {
-			System.out.printf("Adicionar Atleta agora? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("sim"))      this.adicionarAtletaEmEquipe();
@@ -63,7 +75,7 @@ public class Equipe implements OperacoesComuns{
 		}
 		
 		while (true) {
-			System.out.printf("Você deseja também adicionar um Técnico agora? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nVocê deseja também adicionar um Técnico agora? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("sim"))      this.adicionarTecnicoEmEquipe();

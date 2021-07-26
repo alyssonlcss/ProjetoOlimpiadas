@@ -35,6 +35,7 @@ public class Main {
                         break;
                     case 2:
                     	int i = 0;
+                    	System.out.println("Comitês cadastrados: ");
                     	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
                     		System.out.printf("[%d] %s\n",i,c.getNome());
                     		i++;
@@ -46,15 +47,40 @@ public class Main {
                     	ComiteOlimpico.getLista_comites().get(i).remover(i);                    	
                         break;
                     case 3:
+                    	i = 0;
+                    	System.out.println("Comitês cadastrados: ");
+                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
+                    		System.out.printf("[%d] %s\n",i,c.getNome());
+                    		i++;
+                    	}
+                    	System.out.println("Digite o número do comitê que você deseja Alterar: ");
+                    	
+                    	i = Utils.entrada.nextInt();
+                    	
+                    	ComiteOlimpico.getLista_comites().get(i).alterarComite(i);
+                    	
                         break;
-                    case 4:
-                		
+                    case 4: // LISTAR COMITÊS
+                    	i = 0;
+                    	System.out.println("Comitês cadastrados: ");
+                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
+                    		System.out.printf("[%d] %s\n",i,c.getNome());
+                    		i++;
+                    	}
+                    	System.out.println("Digite o número do comitê que você deseja listar as informações: ");
+
+                    	i = Utils.entrada.nextInt();
+
+                    	ComiteOlimpico.getLista_comites().get(i).listarDados();
                 		break;
                     case 5:
-                        //
+                        System.out.println("Digite o nome do comitê que você deseja buscar: ");
+                        String nome = Utils.entrada.nextLine();
+                        
+                        
                         break;
                     default:
-                        //
+                        System.out.println("Opção inválida, digite novamente !");
                     }
                     
                 } while (opcao != 0);
