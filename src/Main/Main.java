@@ -1,4 +1,3 @@
-package Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -66,17 +65,20 @@ public class Main {
                     
                     switch(opcao) {
                     case 1:
-                        for (ComiteOlimpico a: comites) {
+                        for(int i = 0; i < comites.size(); i++) {
+                            System.out.println(i + ": " + comites.get(i).toString());
                         }
+                        comites.get(0).adicionarEquipe();                       
+
                         break;
                     case 2:
-                        Equipe.remover(entrada);
+                        equipes.remover();
                         break;
                     case 3:
                         //
                         break;
                     case 4:
-                        Equipe.listar();						
+                        equipes.listarDados();
                         break;
                     case 5:
                         //

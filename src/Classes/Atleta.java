@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import ENUMs.TipoDeMedalhas;
 import Interfaces.OperacoesComuns;
 
 public class Atleta extends CredenciadoOlimpico implements OperacoesComuns{
@@ -61,16 +62,29 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns{
 		}
 	}
 
-	private void adicionarMedalhas() {
+	private void medalhasAtleta() {
 		ArrayList<Integer> n_medalhas = new ArrayList<>();
-		
+		String tipo ;
+
 		scanner.nextLine();
-		System.out.printf("Quantidade de ouro: ");
+		System.out.printf("Tipo de medalhas atletlas (ouro, prata ou bronze): ");
+		tipo = scanner.nextLine().toUpperCase();
+		if (TipoDeMedalhas.valueOf(tipo) == TipoDeMedalhas.OURO) {
+			Medalha ouro = new Medalha();
+			ouro.setMaterial("Ouro");
+			ouro.setQuantidade(n_medalhas.get(0));
+			System.out.printf("Ano: ");
+			ouro.setAno(scanner.nextInt());
+			medalhas.add(ouro);
+		}
+
+		/* System.out.printf("Quantidade de ouro: ");
 		n_medalhas.add(scanner.nextInt());
 		System.out.printf("Quantidade de prata: ");
 		n_medalhas.add(scanner.nextInt());
 		System.out.printf("Quantidade de bronze: ");
-		n_medalhas.add(scanner.nextInt());
+		n_medalhas.add(scanner.nextInt()); */
+
 		if (n_medalhas.get(0) > 0) {
 			Medalha ouro = new Medalha();
 			ouro.setMaterial("Ouro");
@@ -100,17 +114,20 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns{
 
 	public boolean adicionarAtleta() {
 		String temp;
-
+		// nome do atleta
 		System.out.printf("Nome do atleta: ");
 		this.nome = scanner.nextLine();
+		// sexo
 		System.out.printf("Sexo: ");
 		this.sexo = scanner.nextLine();
+		// equipe
+		
 		do {
 			System.out.printf("O atleta possui medalha? digite: 'sim' ou 'não' caso contrário");
 			temp = scanner.nextLine();
 		} while (!(temp.equals("sim") || temp.equals("não")));
 		if (temp.equals("sim")) {
-			adicionarMedalhas();
+			medalhasAtleta();
 		}
 		return true;
 	}
@@ -121,12 +138,27 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns{
 	
 	@Override
 	public boolean remover(String nome) {
-		return false;
+		if(nome.equals(this.getNome())) {
+			this.setNome(null);
+			this.setId(null);
+			this.medalhas.clear();
+			this.equipe.remover(nome);
+			System.out.println("Dados Excluídos Com Sucesso!!!");
+			return true;
+		}else {
+			System.out.println("Atleta Inserido Não Foi Encontrado!!!");
+			return false;
+		}	
 	}
 
 	@Override
 	public String buscar(String nome) {
-		return null;
+		if(nome.equals(this.getNome())){
+			this.listarDados();
+			return nome + "encontrado, dados acima";
+		}else {
+			return "Os dados de " + nome + " não foram encontrados!!!";
+		}
 	}
 
 	@Override
@@ -137,12 +169,7 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns{
 
 	@Override
 	public String toString() {
-		return "{" +
-			" nome='" + getNome() + "'" +
-			", sexo='" + getSexo() + "'" +
-			", medalha='" + getMedalhas() + "'" +
-			", equipe='" + getEquipe() + "'" +
-			"}";
+		return "{" + " nome='" + getNome() + "'" + ", sexo='" + getSexo() + "'" + ", medalha='" + getMedalhas() + "'" + ", equipe='" + getEquipe() + "'" + "}";
 	}
 	
 }

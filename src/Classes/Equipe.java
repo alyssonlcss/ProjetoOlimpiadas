@@ -52,6 +52,11 @@ public class Equipe implements OperacoesComuns{
 		this.comissaoTecnica = comissaoTecnica;
 	}
 	
+	public void adicionar() {
+		Atleta atleta = new Atleta();
+		atleta.adicionarAtleta();
+		atletas.add(atleta);
+	}
 
 	public boolean adicionarEquipe() {
 		String temp;
@@ -64,9 +69,7 @@ public class Equipe implements OperacoesComuns{
 			temp = scanner.nextLine();
 		} while (!(temp.equals("yes") || temp.equals("no")));
 		if (temp.equals("yes")) {
-			Atleta atleta = new Atleta();
-			atleta.adicionarAtleta();
-			atletas.add(atleta);
+			adicionar();
 		}
 		do {
 			System.out.printf("Adicionar técnico agora? digite: 'sim' ou 'não' caso contrário");

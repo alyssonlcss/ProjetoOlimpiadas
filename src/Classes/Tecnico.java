@@ -67,14 +67,26 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns{
 	
 	@Override
 	public boolean remover(String nome) {
-		// TODO Auto-generated method stub
-		return false;
+		if(nome.equals(this.getNome())) {
+			this.setNome(null);
+			this.setCargo(null);
+			this.setEquipe(null);
+			System.out.println("Dados Excluídos Com Sucesso!!!");
+			return true;
+		}else {
+			System.out.println("Técnico Não Foi Encontrado!!!");
+			return false;
+		}
 	}
 
 	@Override
 	public String buscar(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		if(nome.equals(this.getNome())) {
+			this.listarDados();
+			return nome + "encontrado, dados acima";
+		}else {
+			return "Os dados de " + nome + " não foram encontrados!!!";
+		}
 	}
 	
 	@Override
