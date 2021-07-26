@@ -74,9 +74,13 @@ public class ComiteOlimpico implements OperacoesComuns{
 		return lista_comites.remove(lista_comites.get(indice));
 	}
 
-	@Override
-	public String buscar(String nome) {
+	public static ComiteOlimpico buscar(String nome) {
 		
+		for (ComiteOlimpico comite : lista_comites) {
+			if (nome.equalsIgnoreCase(comite.nome)) {
+				return comite;
+			}
+		}
 		return null;
 	}
 
@@ -99,7 +103,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	public void alterarComite(int indice) {
 		ComiteOlimpico comite = lista_comites.get(indice);
 		
-		System.out.println("Digite o novo nome do comitê: ");
+		System.out.println("Digite o novo nome do comitê: "); Utils.entrada.nextLine();
 		comite.setNome(Utils.entrada.nextLine());
 		
 		System.out.println("Digite o novo país do comitê: ");

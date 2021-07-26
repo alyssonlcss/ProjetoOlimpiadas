@@ -34,9 +34,8 @@ public class Tecnico implements OperacoesComuns{
 		return false;
 	}
 
-	@Override
-	public String buscar(String nome) {
-		
+	public static String buscar(String nome) {
+	
 		return null;
 	}
 
@@ -44,6 +43,5 @@ public class Tecnico implements OperacoesComuns{
 	public void listarDados() {
 			
 	}
-	
 	
 }
