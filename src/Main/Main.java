@@ -65,9 +65,7 @@ public class Main {
                     
                     switch(opcao) {
                     case 1:
-                        for(int i = 0; i < comites.size(); i++) {
-                            System.out.println(i + ": " + comites.get(i).toString());
-                        }
+                       
                         comites.get(0).adicionarEquipe();                       
 
                         break;
