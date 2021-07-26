@@ -1,7 +1,7 @@
 package interfaces;
 
 public interface OperacoesComuns {
-	public void adicionar();
-	public boolean remover(int indece);
-	public void listarDados();
+	public abstract void adicionar(boolean sinalizadora);
+	public abstract boolean remover(int indece);
+	public abstract void listarDados();
 }

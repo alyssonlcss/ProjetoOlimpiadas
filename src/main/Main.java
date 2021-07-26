@@ -32,7 +32,7 @@ public class Main {
                     switch(opcao) {
                     case 1: // ADICIONAR COMITÊ
                     	ComiteOlimpico comite = new ComiteOlimpico();
-                    	comite.adicionar();
+                    	comite.adicionar(false);
                         break;
                     case 2: // REMOVER COMITÊ
                     	int i = 0;
@@ -108,9 +108,11 @@ public class Main {
                         break;
                     case 2: // REMOVER EQUIPE
                     	System.out.println("Equipes que podem ser removidas:");
+                    	int i;
                     	for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+                    		i = 0;
                     		for (Equipe equipe : comite.getEquipe()) {
-                    			System.out.printf("[%d] %s",i, com);
+                    			System.out.printf("[%d] %s",i,equipe.getNome());
                     		}
                     	}
                         break;

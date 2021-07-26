@@ -51,7 +51,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	
 	
 	@Override
-	public void adicionar() {
+	public void adicionar(boolean sinalizadora) {
 		String temporario;
 		
 		System.out.printf("Digite o nome do comitê: ");
@@ -63,7 +63,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 			System.out.printf("\nDeseja adicionar equipe agora? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite();
+			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite(sinalizadora);
 			else if (temporario.equalsIgnoreCase("não")) break;
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
@@ -94,9 +94,9 @@ public class ComiteOlimpico implements OperacoesComuns{
 	}
 
 	
-	public void adicionarEquipeAoComite() {
+	public void adicionarEquipeAoComite(boolean sinalizadora) {
 		Equipe equipe = new Equipe();
-		equipe.adicionar();
+		equipe.adicionar(sinalizadora);
 		this.equipes.add(equipe);
 	}
 	
