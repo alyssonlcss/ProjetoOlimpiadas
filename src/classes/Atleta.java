@@ -46,7 +46,7 @@ public class Atleta implements OperacoesComuns{
 		this.sexo = Utils.entrada.nextLine();
 		
 		while (true) {
-			System.out.printf("Deseja adicionar Medalhas agora? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nDeseja adicionar Medalhas agora? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("sim"))      this.adicionarMedalhasDoAtleta();
@@ -61,8 +61,8 @@ public class Atleta implements OperacoesComuns{
 		return false;
 	}
 
-	@Override
-	public String buscar(String nome) {
+
+	public static String buscar(String nome) {
 		
 		return null;
 	}
