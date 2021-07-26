@@ -35,6 +35,16 @@ public class Atleta implements OperacoesComuns{
 		this.medalhas = medalhas;
 	}
 
+	public Medalha removerMedalha(int ano) {
+		Medalha medalhaRemovida = null;
+		for(int i = 0; i < this.medalhas.size(); i++) {
+			if(this.medalhas.get(i).getAno() == ano) {
+				medalhaRemovida = this.medalhas.remove(i);
+			}
+		}
+		return medalhaRemovida;
+	} 
+
 	@Override
 	public void adicionar() {
 		

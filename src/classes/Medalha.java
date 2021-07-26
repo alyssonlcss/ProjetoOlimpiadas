@@ -43,17 +43,14 @@ public class Medalha implements OperacoesComuns{
 	
 	@Override
 	public boolean remover(int indice) {
-		
 		return false;
 	}
 	@Override
 	public String buscar(String nome) {
-		
 		return null;
 	}
 	@Override
 	public void listarDados() {
-		
-		
+		System.out.printf("Medalha de: %s, ano de conquista: %d\n", this.material, this.ano);
 	}
 }
