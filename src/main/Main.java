@@ -1,18 +1,16 @@
+package main;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
+import classes.ComiteOlimpico;
 import lib.Utils;
-import Classes.Atleta;
-import Classes.ComiteOlimpico;
-import Classes.Equipe;
+
 
 public class Main {
-       
-    public static void main(String[] args) {
-        
-        Scanner entrada = new Scanner(System.in);
-        ArrayList<ComiteOlimpico> comites = new ArrayList<>();
+
+	public static void main(String[] args) {
+		
+		Scanner entrada = new Scanner(System.in);
         
         while (true) {
             Utils.menuPrincipal();
@@ -32,19 +30,26 @@ public class Main {
                     
                     switch(opcao) {
                     case 1:
-                        ComiteOlimpico comite = new ComiteOlimpico();
-                        comite.adicionarComite();
-                        comites.add(comite);				
+                    	ComiteOlimpico comite = new ComiteOlimpico();
+                    	comite.adicionar();
                         break;
                     case 2:
-                        comite.remover("d");
-                        //
+                    	int i = 0;
+                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
+                    		System.out.printf("[%d] %s\n",i,c.getNome());
+                    		i++;
+                    	}
+                    	System.out.println("Digite o número do comitê que você deseja remover: ");
+                    	
+                    	i = Utils.entrada.nextInt();
+                    	
+                    	ComiteOlimpico.getLista_comites().get(i).remover(i);                    	
                         break;
                     case 3:
                         break;
                     case 4:
-                        comite.listar();
-                        break;
+                		
+                		break;
                     case 5:
                         //
                         break;
@@ -65,20 +70,17 @@ public class Main {
                     
                     switch(opcao) {
                     case 1:
-                        for(int i = 0; i < comites.size(); i++) {
-                            System.out.println(i + ": " + comites.get(i).toString());
-                        }
-                        comites.get(0).adicionarEquipe();                       
+                                             
 
                         break;
                     case 2:
-                        equipes.remover();
+                       
                         break;
                     case 3:
                         //
                         break;
                     case 4:
-                        equipes.listarDados();
+                        
                         break;
                     case 5:
                         //
@@ -91,14 +93,14 @@ public class Main {
                 break;
             case 3:
                 do {
-                    menu("Atleta");
+                    Utils.menu("Atleta");
                     
                     System.out.println("Entre com um opção: ");
                     opcao = entrada.nextInt(); entrada.nextLine();
                     
                     switch(opcao) {
                     case 1:
-                        Atleta.adicionar(entrada);
+                       
                         break;
                     case 2:
                         //
@@ -120,10 +122,8 @@ public class Main {
                 break;
             case 4:
                 do {
-                    menu("Comissão Técnica");
-                    
-                    System.out.println("Entre com um opção: ");
-                    opcao = entrada.nextInt(); entrada.nextLine();
+                    Utils.menu("Comissão Técnica");
+                 
                     
                     switch(opcao) {
                     case 1:
@@ -152,4 +152,3 @@ public class Main {
         entrada.close();
     }
 }
-    
