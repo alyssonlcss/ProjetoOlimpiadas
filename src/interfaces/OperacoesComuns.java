@@ -1,8 +1,8 @@
-package Interfaces;
+package interfaces;
 
 public interface OperacoesComuns {
-	
-	public boolean remover(String nome);
+	public void adicionar();
+	public boolean remover(int indece);
 	public String buscar(String nome);
 	public void listarDados();
 }

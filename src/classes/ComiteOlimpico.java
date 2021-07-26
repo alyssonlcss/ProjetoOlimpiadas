@@ -1,0 +1,95 @@
+package classes;
+
+import java.util.ArrayList;
+
+import interfaces.OperacoesComuns;
+import lib.Utils;
+
+
+public class ComiteOlimpico implements OperacoesComuns{
+	
+	private String nome;
+	private String pais;
+	private ArrayList<Equipe> equipes = new ArrayList<>();
+	private static ArrayList<ComiteOlimpico> lista_comites = new ArrayList<>();
+	
+	public ComiteOlimpico() {
+		lista_comites.add(this);
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	
+	public ArrayList<Equipe> getEquipe() {
+		return equipes;
+	}
+
+	public void setEquipe(ArrayList<Equipe> equipe) {
+		this.equipes = equipe;
+	}
+
+	public static ArrayList<ComiteOlimpico> getLista_comites() {
+		return lista_comites;
+	}
+
+	public static void setLista_comites(ArrayList<ComiteOlimpico> lista_comites) {
+		ComiteOlimpico.lista_comites = lista_comites;
+	}
+	
+	
+	@Override
+	public void adicionar() {
+		String temporario;
+		
+		System.out.printf("Digite o nome do comitê: ");
+		this.nome = Utils.entrada.nextLine();
+		System.out.printf("Digite o País do comitê: ");
+		this.pais = Utils.entrada.nextLine();
+		
+		while (true) {
+			System.out.printf("Deseja adicionar equipe agora? digite... 'sim' ou 'não' caso contrário: ");
+			temporario = Utils.entrada.nextLine();
+			
+			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite();
+			else if (temporario.equalsIgnoreCase("não")) break;
+			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
+		}
+	}
+	
+	@Override
+	public boolean remover(int indice) { 
+		return lista_comites.remove(lista_comites.get(indice));
+	}
+
+	@Override
+	public static String buscar(String nome) {
+		
+		return null;
+	}
+
+	@Override
+	public void listarDados() {
+		
+	}
+
+	
+	public void adicionarEquipeAoComite() {
+		Equipe equipe = new Equipe();
+		equipe.adicionar();
+		this.equipes.add(equipe);
+	}
+	
+}
