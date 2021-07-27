@@ -35,9 +35,13 @@ public class Main {
                                 ComiteOlimpico.getLista_comites().add(comite);
                                 break;
                             case 2: // REMOVER COMITÊ
-                                result = Utils.escolhaComite();
-                                ComiteOlimpico.getLista_comites().get(result).remover(result);                    	
-                                break;
+                                if(!ComiteOlimpico.getLista_comites().isEmpty()) {
+                                    result = Utils.escolhaComite();
+                                    ComiteOlimpico.getLista_comites().get(result).remover(result);                    	
+                                    break;
+                                } else{
+                                    System.out.println("Lista de comitês vazia!");
+                                }
                             case 3: // ALTERAR COMITÊ
                                 result = Utils.escolhaComite();
                                 ComiteOlimpico.getLista_comites().get(result).alterarComite(result);
@@ -62,10 +66,7 @@ public class Main {
                             default:
                                 System.out.println("Opção inválida, digite novamente!");
                         }
-                        
                     } while (opcao != 0);
-                    
-                    
                     break;
                 case 2: // GERENCIAR EQUIPE
                     do {
@@ -106,7 +107,7 @@ public class Main {
                                 System.out.println("Opção inválida, digite novamente!");
                             }
                             
-                        } while (opcao != 0);
+                    } while (opcao != 0);
                         break;
                     case 3: // GERENCIAR ATLETA
                         do {
@@ -122,11 +123,12 @@ public class Main {
                                         opcao = 0;
                                         break;
                                     }
-                                    if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addTecnico(result)) {
+                                    if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addAtleta(result)) {
                                         opcao = 0;
                                         break;
+                                    } else {
+                                        System.out.println("Não foi possível adicionar o atleta.");
                                     }
-                                    els
                                     break;
                                 case 2:
                                     //
@@ -154,14 +156,16 @@ public class Main {
                             
                             switch(opcao) {
                                 case 1:
-                                    result = Utils.escolhaComite2("atleta");
-                                    if(result == 0) {
-                                        opcao = 0;
-                                        break;
-                                    }
-                                    if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addAtleta(result)) {
-                                        opcao = 0;
+                                result = Utils.escolhaComite2("técnico");
+                                if(result == 0) {
+                                    opcao = 0;
                                     break;
+                                }
+                                if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addTecnico(result)) {
+                                    opcao = 0;
+                                    break;
+                                } else {
+                                    System.out.println("Não foi possível adicionar o técnico.");
                                 }
                                     break;
                                 case 2:

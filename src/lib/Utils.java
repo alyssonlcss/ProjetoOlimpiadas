@@ -23,7 +23,7 @@ public class Utils {
 	        System.out.println("[3] Alterar "   + nome + ".");
 	        System.out.println("[4] Listar "    + nome + ".");
 	        System.out.println("[5] Buscar "    + nome + ".");
-	        System.out.println("[0] SAIR.                  ");
+	        System.out.println("[0] VOLTAR.                  ");
 	    }
 
 		public static int escolhaComite() {
