@@ -104,13 +104,18 @@ public class Main {
                     
                     switch(opcao) {
                     case 1: // ADICIONAR EQUIPE
+                        int i = 0;
+                        for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+                            System.out.printf("[%d] %s",i, comite.getNome());
+                            i++;
+                        }
                                       
                         break;
                     case 2: // REMOVER EQUIPE
                     	System.out.println("Equipes que podem ser removidas:");
                     	for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
                     		for (Equipe equipe : comite.getEquipe()) {
-                    			System.out.printf("[%d] %s",i, com);
+                    			System.out.printf("[%d] %s",i, comite);
                     		}
                     	}
                         break;

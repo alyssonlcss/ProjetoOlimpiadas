@@ -9,7 +9,11 @@ public class Atleta implements OperacoesComuns{
 	
 	private String nome;
 	private String sexo;
-	private ArrayList<Medalha> medalhas = new ArrayList<>();
+	private ArrayList<Medalha> medalhas;
+
+	Atleta() {
+		medalhas = new ArrayList<>();
+	}
 	
 	public String getNome() {
 		return nome;
