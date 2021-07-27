@@ -24,26 +24,22 @@ public class Tecnico implements OperacoesComuns{
 
 	@Override
 	public void adicionar() {
-		
-		
+
 	}
 
 	@Override
 	public boolean remover(int indice) {
-		
 		return false;
 	}
 
 	@Override
 	public String buscar(String nome) {
-		
 		return null;
 	}
 
 	@Override
 	public void listarDados() {
-			
+		System.out.printf("Nome do técnico: %s\n", this.nome);
+		System.out.printf("Cargo do técnico: %s\n", this.cargo);
 	}
-	
-	
 }
