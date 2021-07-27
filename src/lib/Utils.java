@@ -2,6 +2,8 @@ package lib;
 
 import java.util.Scanner;
 
+import classes.ComiteOlimpico;
+
 public class Utils {
 		
 	   public static Scanner entrada  = new Scanner(System.in);
@@ -21,6 +23,30 @@ public class Utils {
 	        System.out.println("[3] Alterar "   + nome + ".");
 	        System.out.println("[4] Listar "    + nome + ".");
 	        System.out.println("[5] Buscar "    + nome + ".");
-	        System.out.println("[0] SAIR.                  ");
+	        System.out.println("[0] VOLTAR.                  ");
+	    }
+
+		public static int escolhaComite() {
+			int i = 0;
+			for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
+				System.out.printf("[%d] - %s\n",i, c.getNome());
+				i++;
+			}
+
+			System.out.printf("Digite o número do comitê desejado: ");
+			return entrada.nextInt();
+	    }
+
+		public static int escolhaComite2(String nome) {
+			int i = 0;
+			for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
+				System.out.printf("[%d] - %s\n",i, c.getNome());
+				i++;
+			}
+
+			System.out.printf("Digite o número do comitê que a(o) "+ nome +" pertence," +"\n"+
+				"caso o comitê não esteja na lista, digite '0'." +"\n"+
+				"Sua escolha: ");
+			return entrada.nextInt();
 	    }
 }

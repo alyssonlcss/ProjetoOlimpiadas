@@ -9,7 +9,11 @@ public class Atleta implements OperacoesComuns {
 	
 	private String nome;
 	private String sexo;
-	private ArrayList<Medalha> medalhas = new ArrayList<>();
+	private ArrayList<Medalha> medalhas;
+
+	Atleta() {
+		medalhas = new ArrayList<>();
+	}
 	
 	public String getNome() {
 		return nome;
@@ -99,10 +103,11 @@ public class Atleta implements OperacoesComuns {
 		return false;
 	}
 
-	@Override
-	public String buscar(String nome) {
-		return null;
-	}
+
+
+	public static String buscar(String nome) {
+		
+  }
 
 	@Override
 	public void listarDados() {

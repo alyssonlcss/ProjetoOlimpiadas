@@ -51,7 +51,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	
 	
 	@Override
-	public void adicionar() {
+	public void adicionar(boolean sinalizadora) {
 		String temporario;
 		
 		System.out.printf("Digite o nome do comitê: ");
@@ -63,20 +63,55 @@ public class ComiteOlimpico implements OperacoesComuns{
 			System.out.printf("\nDeseja adicionar equipe agora? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite();
+			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite(sinalizadora);
 			else if (temporario.equalsIgnoreCase("não")) break;
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
 	}
+
+	public boolean apurarEquipes_addAtleta(int indice) {
+			//escolhe a equipe e add atleta nela
+			int result;
+			for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
+				System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+			}
+			System.out.printf("Digite o número da equipe que a(o) atleta pertence," +"\n"+
+				"caso a equipe não esteja na lista, digite '0'." +"\n"+
+				"Sua escolha: ");
+			result = Utils.entrada.nextInt();
+			if(result == 0) return false;
+			lista_comites.get(indice).equipes.get(result).adicionarAtletaEmEquipe();
+			return true;
+	}
+
+
+	public boolean apurarEquipes_addTecnico(int indice) {
+		//escolhe a equipe e add atleta nela
+		int result;
+		for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
+			System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+		}
+		System.out.printf("Digite o número da equipe que a(o) técnico pertence," +"\n"+
+			"caso a equipe não esteja na lista, digite '0'." +"\n"+
+			"Sua escolha: ");
+		result = Utils.entrada.nextInt();
+		if(result == 0) return false;
+		lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
+		return true;
+}
 	
 	@Override
 	public boolean remover(int indice) { 
 		return lista_comites.remove(lista_comites.get(indice));
 	}
 
-	@Override
-	public String buscar(String nome) {
+	public static ComiteOlimpico buscar(String nome) {
 		
+		for (ComiteOlimpico comite : lista_comites) {
+			if (nome.equalsIgnoreCase(comite.nome)) {
+				return comite;
+			}
+		}
 		return null;
 	}
 
@@ -90,16 +125,16 @@ public class ComiteOlimpico implements OperacoesComuns{
 	}
 
 	
-	public void adicionarEquipeAoComite() {
+	public void adicionarEquipeAoComite(boolean sinalizadora) {
 		Equipe equipe = new Equipe();
-		equipe.adicionar();
+		equipe.adicionar(sinalizadora);
 		this.equipes.add(equipe);
 	}
 	
 	public void alterarComite(int indice) {
 		ComiteOlimpico comite = lista_comites.get(indice);
 		
-		System.out.println("Digite o novo nome do comitê: ");
+		System.out.println("Digite o novo nome do comitê: "); Utils.entrada.nextLine();
 		comite.setNome(Utils.entrada.nextLine());
 		
 		System.out.println("Digite o novo país do comitê: ");
