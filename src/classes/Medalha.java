@@ -46,8 +46,8 @@ public class Medalha implements OperacoesComuns{
 		
 		return false;
 	}
-	@Override
-	public String buscar(String nome) {
+	
+	public static String buscar(String nome) {
 		
 		return null;
 	}

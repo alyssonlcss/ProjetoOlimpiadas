@@ -45,7 +45,7 @@ public class Equipe implements OperacoesComuns{
 	}
 
 	@Override
-	public void adicionar() {
+	public void adicionar(boolean sinalizador) {
 		String temporario;
 
 		for(int i = 0; i < ComiteOlimpico.getLista_comites().size(); i++) {
@@ -57,17 +57,19 @@ public class Equipe implements OperacoesComuns{
 		System.out.printf("Digite a modalidade da Equipe: ");
 		this.modalidade = Utils.entrada.nextLine();
 		
-		System.out.println("Escolha um comitê para adicionar sua equipe!");
-		System.out.println("Comitês disponíveis:");
-		int i = 0;
-		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
-			System.out.printf("[%d] %s\n",i,comite.getNome());
-    		i++;
+		if (sinalizador) {
+			System.out.println("Escolha um comitê para adicionar sua equipe!");
+			System.out.println("Comitês disponíveis:");
+			int i = 0;
+			for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+				System.out.printf("[%d] %s\n",i,comite.getNome()); 
+	    		i++;
+			}
+			
+			i = Utils.entrada.nextInt();
+			
+			ComiteOlimpico.getLista_comites().get(i).getEquipe().add(this);
 		}
-		
-		i = Utils.entrada.nextInt();
-		
-		ComiteOlimpico.getLista_comites().get(i).getEquipe().add(this);
 		
 		while (true) {
 			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? digite... 'sim' ou 'não' caso contrário: ");
@@ -94,8 +96,8 @@ public class Equipe implements OperacoesComuns{
 		return false;
 	}
 
-	@Override
-	public String buscar(String nome) {
+
+	public static String buscar(String nome) {
 		
 		return null;
 	}
