@@ -68,6 +68,37 @@ public class ComiteOlimpico implements OperacoesComuns{
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
 	}
+
+	public boolean apurarEquipes_addAtleta(int indice) {
+			//escolhe a equipe e add atleta nela
+			int result;
+			for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
+				System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+			}
+			System.out.printf("Digite o número da equipe que a(o) atleta pertence," +"\n"+
+				"caso a equipe não esteja na lista, digite '0'." +"\n"+
+				"Sua escolha: ");
+			result = Utils.entrada.nextInt();
+			if(result == 0) return false;
+			lista_comites.get(indice).equipes.get(result).adicionarAtletaEmEquipe();
+			return true;
+	}
+
+
+	public boolean apurarEquipes_addTecnico(int indice) {
+		//escolhe a equipe e add atleta nela
+		int result;
+		for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
+			System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+		}
+		System.out.printf("Digite o número da equipe que a(o) técnico pertence," +"\n"+
+			"caso a equipe não esteja na lista, digite '0'." +"\n"+
+			"Sua escolha: ");
+		result = Utils.entrada.nextInt();
+		if(result == 0) return false;
+		lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
+		return true;
+}
 	
 	@Override
 	public boolean remover(int indice) { 

@@ -18,204 +18,172 @@ public class Main {
             if (opcao == 0) break;
             
             switch (opcao) {
-            case 1:
-                
-                do {
-                    Utils.menu("Comitê");
-                    System.out.println("Entre com um opção: ");
-                    opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
-                    
-                    switch(opcao) {
-                    case 1: // ADICIONAR COMITÊ
-                    	ComiteOlimpico comite = new ComiteOlimpico();
-                    	comite.adicionar(false);
-                        break;
-                    case 2: // REMOVER COMITÊ
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-	                    	int i = 0;
-	                    	System.out.println("Comitês cadastrados: ");
-	                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
-	                    		System.out.printf("[%d] %s\n",i,c.getNome());
-	                    		i++;
-	                    	}
-	                    	System.out.println("Digite o número do comitê que você deseja remover: ");
-	                    	
-	                    	i = Utils.entrada.nextInt();
-	                    	
-	                    	ComiteOlimpico.getLista_comites().get(i).remover(i);
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado!");
-                    	}
-                        break;
-                    case 3: // ALTERAR COMITÊ
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-	                    	int i = 0;
-	                    	System.out.println("Comitês cadastrados: ");
-	                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
-	                    		System.out.printf("[%d] %s\n",i,c.getNome());
-	                    		i++;
-	                    	}
-	                    	System.out.println("Digite o número do comitê que você deseja Alterar: ");
-	                    	
-	                    	i = Utils.entrada.nextInt();
-	                    	
-	                    	ComiteOlimpico.getLista_comites().get(i).alterarComite(i);
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado!");
-                    	}
-                        break;
-                    case 4: // LISTAR COMITÊS
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-	                    	int i = 0;
-	                    	System.out.println("Comitês cadastrados: ");
-	                    	for (ComiteOlimpico c: ComiteOlimpico.getLista_comites()) {
-	                    		System.out.printf("[%d] %s\n",i,c.getNome());
-	                    		i++;
-	                    	}
-	                    	System.out.println("Digite o número do comitê que você deseja listar as informações: ");
-	
-	                    	i = Utils.entrada.nextInt();
-	
-	                    	ComiteOlimpico.getLista_comites().get(i).listarDados();
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado!");
-                    	}
-                		break;
-                    case 5: // BUSCAR COMITÊ
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-	                        System.out.println("Digite o nome do comitê que você deseja buscar: ");
-	                        String nome = Utils.entrada.nextLine();
-	                        
-	                        ComiteOlimpico result_busca = ComiteOlimpico.buscar(nome);
-	                        
-	                        if (result_busca!= null) {
-	                        	System.out.println("Comitê encontrado!");
-	                        	result_busca.listarDados();
-	                        } else {
-	                        	System.out.println("Comitê não encontrado!");
-	                        }
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado!");
-                    	}
-                        break;
-                    }
-                } while (opcao != 0);
-                break;
-            case 2:
-                do {
-                    Utils.menu("Equipe");
-                    
-                    System.out.println("Entre com um opção: ");
-                    opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
-                    
-                    switch(opcao) {
-                    case 1: // ADICIONAR EQUIPE
-                    	
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-                    		Equipe equipe = new Equipe();
-                    		equipe.adicionar(true);
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado. Cadastre um comitê primeiro!");
-                    	}
-                    	
-                        break;
-                    case 2: // REMOVER EQUIPE
-                    	if (!ComiteOlimpico.getLista_comites().isEmpty()) {
-                    			System.out.println("Equipes que podem ser removidas:");
-	                    		int i;
-		                    	for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
-		                    		i = 0;
-		                    		System.out.println("Comitê - " + comite.getNome() + " { ");
-		                    		if (comite.getEquipe().isEmpty()) System.out.println("comitê não possui equipes cadastradas.");
-		                    		for (Equipe equipe : comite.getEquipe()) {
-		                    			System.out.printf("%d. %s",i,equipe.getNome());
-		                    			i++;
-		                    		}
-		                    		System.out.println("\n}");
-		                    	}
-		                    	System.out.println("\nDigite o número da Equipe que você deseja remover: ");
-		                    	
-		                    	i = Utils.entrada.nextInt();
-		                    	
-		                    	
-                    	} else {
-                    		System.out.println("Você não possui nenhum comitê cadastrado. Cadastre um comitê primeiro!");
-                    	}
-                    	
-                        break;
-                    case 3: // ALTERAR EQUIPE
-                        //
-                        break;
-                    case 4: // LISTAR EQUIPE
+                int result;
+                case 1: // GERENCIAR COMITÊS
+                    do {
+                        Utils.menu("Comitê");
+                        System.out.println("Entre com um opção: ");
+                        opcao = entrada.nextInt(); entrada.nextLine();
+                        switch(opcao) {
+                            case 1: // ADICIONAR COMITÊ
+                                ComiteOlimpico comite = new ComiteOlimpico();
+                                comite.adicionar(false);
+                                ComiteOlimpico.getLista_comites().add(comite);
+                                break;
+                            case 2: // REMOVER COMITÊ
+                                if(!ComiteOlimpico.getLista_comites().isEmpty()) {
+                                    result = Utils.escolhaComite();
+                                    ComiteOlimpico.getLista_comites().get(result).remover(result);                    	
+                                    break;
+                                } else{
+                                    System.out.println("Lista de comitês vazia!");
+                                }
+                            case 3: // ALTERAR COMITÊ
+                                result = Utils.escolhaComite();
+                                ComiteOlimpico.getLista_comites().get(result).alterarComite(result);
+                                break;
+                            case 4: // LISTAR COMITÊS
+                                result = Utils.escolhaComite();
+                                ComiteOlimpico.getLista_comites().get(result).listarDados(); // toString????
+                                break;
+                            case 5: // BUSCAR COMITÊ
+                                System.out.println("Digite o nome do comitê que você deseja buscar: ");
+                                String nome = Utils.entrada.nextLine();
+                                
+                                ComiteOlimpico result_busca = ComiteOlimpico.buscar(nome);
+                                
+                                if (result_busca!= null) {
+                                    System.out.println("Comitê encontrado!");
+                                    System.out.println(result_busca.toString());
+                                } else {
+                                    System.out.println("Comitê não encontrado!");
+                                }
+                                break;
+                            default:
+                                System.out.println("Opção inválida, digite novamente!");
+                        }
+                    } while (opcao != 0);
+                    break;
+                case 2: // GERENCIAR EQUIPE
+                    do {
+                        Utils.menu("Equipe");
                         
-                        break;
-                    case 5: // BUSCAR EQUIPE
-                        //
-                        break;
-                    default:
+                        System.out.println("Entre com um opção: ");
+                        opcao = entrada.nextInt(); entrada.nextLine();
                         
-                    }
-                    
-                } while (opcao != 0);
-                break;
-            case 3:
-                do {
-                    Utils.menu("Atleta");
-                    
-                    System.out.println("Entre com um opção: ");
-                    opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
-                    
-                    switch(opcao) {
-                    case 1:
-                       
+                        switch(opcao) {
+                            case 1: // ADICIONAR EQUIPE
+                                result = Utils.escolhaComite2("equipe");
+                                if(result == 0) {
+                                    opcao = 0;
+                                    break;
+                                }
+                                ComiteOlimpico.getLista_comites().get(result).adicionarEquipeAoComite(true);
+                                break;
+                            case 2: // REMOVER EQUIPE
+                                System.out.println("Equipes que podem ser removidas:");
+                                int i;
+                                for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+                                    i = 0;
+                                    for (Equipe equipe : comite.getEquipe()) {
+                                        System.out.printf("[%d] %s",i,equipe.getNome());
+                                    }
+                                }
+                                break;
+                            case 3: // ALTERAR EQUIPE
+                                //
+                                break;
+                            case 4: // LISTAR EQUIPE
+                                
+                                break;
+                            case 5: // BUSCAR EQUIPE
+                                //
+                                break;
+                            default:
+                                System.out.println("Opção inválida, digite novamente!");
+                            }
+                            
+                    } while (opcao != 0);
                         break;
-                    case 2:
-                        //
-                        break;
-                    case 3:
-                        //
+                    case 3: // GERENCIAR ATLETA
+                        do {
+                            Utils.menu("Atleta");
+                            
+                            System.out.println("Entre com um opção: ");
+                            opcao = entrada.nextInt(); entrada.nextLine();
+                            
+                            switch(opcao) {
+                                case 1: // ADICIONAR ATLETA
+                                    result = Utils.escolhaComite2("atleta");
+                                    if(result == 0) {
+                                        opcao = 0;
+                                        break;
+                                    }
+                                    if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addAtleta(result)) {
+                                        opcao = 0;
+                                        break;
+                                    }
+                                    System.out.println("Não foi possível adicionar o atleta.");
+                                    break;
+                                case 2:
+                                    //
+                                    break;
+                                case 3:
+                                    //
+                                    break;
+                                case 4:
+                                    //						
+                                    break;
+                                case 5:
+                                    //
+                                    break;
+                                default:
+                                System.out.println("Opção inválida, digite novamente!");
+                            }
+                            
+                        } while (opcao != 0);
+
                         break;
                     case 4:
-                        //						
-                        break;
-                    case 5:
-                        //
-                        break;
-                    default:
+                        int result;
+                        do {
+                            Utils.menu("Comissão Técnica");
                         
-                    }
-                    
-                } while (opcao != 0);
-                break;
-            case 4:
-                do {
-                    Utils.menu("Comissão Técnica");
-                 
-                    
-                    switch(opcao) {
-                    case 1:
-                        //
-                        break;
-                    case 2:
-                        //
-                        break;
-                    case 3:
-                        //
-                        break;
-                    case 4:
-                        //						
-                        break;
-                    case 5:
-                        //
-                        break;
-                    default:
+                            
+                            switch(opcao) {
+                                case 1:
+                                result = Utils.escolhaComite2("técnico");
+                                if(result == 0) {
+                                    opcao = 0;
+                                    break;
+                                }
+                                if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addTecnico(result)) {
+                                    opcao = 0;
+                                    break;
+                                }
+                                System.out.println("Não foi possível adicionar o técnico.");
+
+                                    break;
+                                case 2:
+                                    //
+                                    break;
+                                case 3:
+                                    //
+                                    break;
+                                case 4:
+                                    //						
+                                    break;
+                                case 5:
+                                    //
+                                    break;
+                                default:
+                                    System.out.println("Opção inválida, digite novamente!");
+                            }
                         
-                    }
-                    
-                } while (opcao != 0);
-                break;
-            }
-        }
+                    } while (opcao != 0);
+                    break;
+            	}
+        	}
         Utils.entrada.close();
     }
 }
