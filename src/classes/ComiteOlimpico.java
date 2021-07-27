@@ -60,7 +60,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 		this.pais = Utils.entrada.nextLine();
 		
 		while (true) {
-			System.out.printf("\nDeseja adicionar equipe agora? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nDeseja adicionar alguma equipe? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite(sinalizadora);
@@ -86,11 +86,11 @@ public class ComiteOlimpico implements OperacoesComuns{
 
 	@Override
 	public void listarDados() {
-		System.out.println("Nome do comitê = " + this.nome + " País do Comitê = " + this.pais);
-		System.out.println("Equipes deste comitê: ");
+		System.out.println("Nome do comitê = " + this.nome + " | País do Comitê = " + this.pais);
 		for (Equipe equipe : this.equipes) {
-			System.out.println("Equipe - nome = " + equipe.getNome() + ", " + " modalidade = " + equipe.getModalidade());
+			System.out.println("Equipe(s) { \nnome=" + equipe.getNome() + ", " + "\nmodalidade=" + equipe.getModalidade() + "\n");
 		}
+		System.out.println("}");
 	}
 
 	
@@ -108,5 +108,12 @@ public class ComiteOlimpico implements OperacoesComuns{
 		
 		System.out.println("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
+	}
+	
+	
+	public static boolean verificarExistenciaDeEquipes() {
+		for (ComiteOlimpico comite : lista_comites) {
+			if ()
+		}
 	}
 }

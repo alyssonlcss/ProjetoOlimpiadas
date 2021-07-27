@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 
+
 import interfaces.OperacoesComuns;
 import lib.Utils;
 
@@ -52,9 +53,10 @@ public class Equipe implements OperacoesComuns{
 		this.nome = Utils.entrada.nextLine();
 		System.out.printf("Digite a modalidade da Equipe: ");
 		this.modalidade = Utils.entrada.nextLine();
+	
 		
 		if (sinalizador) {
-			System.out.println("Escolha um comitê para adicionar sua equipe!");
+			System.out.println("\nEscolha um comitê para adicionar sua equipe!");
 			System.out.println("Comitês disponíveis:");
 			int i = 0;
 			for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
@@ -62,7 +64,7 @@ public class Equipe implements OperacoesComuns{
 	    		i++;
 			}
 			
-			i = Utils.entrada.nextInt();
+			i = Utils.entrada.nextInt(); Utils.entrada.nextLine();
 			
 			ComiteOlimpico.getLista_comites().get(i).getEquipe().add(this);
 		}
@@ -93,8 +95,14 @@ public class Equipe implements OperacoesComuns{
 	}
 
 
-	public static String buscar(String nome) {
-		
+	public static Equipe buscar(String nome) {
+		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+			for (Equipe equipe : comite.getEquipe()) {
+				if (comite.getNome().equalsIgnoreCase(nome)) {
+					return equipe;
+				}
+			}
+		}
 		return null;
 	}
 
