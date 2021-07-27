@@ -79,13 +79,9 @@ public class ComiteOlimpico implements OperacoesComuns{
 				"caso a equipe não esteja na lista, digite '0'." +"\n"+
 				"Sua escolha: ");
 			result = Utils.entrada.nextInt();
-			if(result == 0) {
-				return false;
-			}
-			else {
-				lista_comites.get(indice).equipes.get(result).adicionarAtletaEmEquipe();
-				return true;
-			}
+			if(result == 0) return false;
+			lista_comites.get(indice).equipes.get(result).adicionarAtletaEmEquipe();
+			return true;
 	}
 
 
@@ -99,13 +95,9 @@ public class ComiteOlimpico implements OperacoesComuns{
 			"caso a equipe não esteja na lista, digite '0'." +"\n"+
 			"Sua escolha: ");
 		result = Utils.entrada.nextInt();
-		if(result == 0) {
-			return false;
-		}
-		else {
-			lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
-			return true;
-		}
+		if(result == 0) return false;
+		lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
+		return true;
 }
 	
 	@Override

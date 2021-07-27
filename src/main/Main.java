@@ -126,9 +126,8 @@ public class Main {
                                     if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addAtleta(result)) {
                                         opcao = 0;
                                         break;
-                                    } else {
-                                        System.out.println("Não foi possível adicionar o atleta.");
                                     }
+                                    System.out.println("Não foi possível adicionar o atleta.");
                                     break;
                                 case 2:
                                     //
@@ -164,9 +163,9 @@ public class Main {
                                 if (ComiteOlimpico.getLista_comites().get(result).apurarEquipes_addTecnico(result)) {
                                     opcao = 0;
                                     break;
-                                } else {
-                                    System.out.println("Não foi possível adicionar o técnico.");
                                 }
+                                System.out.println("Não foi possível adicionar o técnico.");
+
                                     break;
                                 case 2:
                                     //
