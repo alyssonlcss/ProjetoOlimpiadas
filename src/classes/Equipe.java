@@ -76,6 +76,7 @@ public class Equipe implements OperacoesComuns{
 			i = Utils.entrada.nextInt(); Utils.entrada.nextLine();
 			
 			ComiteOlimpico.getLista_comites().get(i).getEquipe().add(this);
+
 		}
 		
 		while (true) {
@@ -133,6 +134,25 @@ public class Equipe implements OperacoesComuns{
 		Tecnico tecnico = new Tecnico();
 		tecnico.adicionar();
 		this.comissaoTecnica.add(tecnico);
+	}
+
+	public void alterarEquipe(int index, int index2) {
+		int result = Utils.menuAlterarEquipe();
+		if(result == 1) {
+			System.out.printf("Novo nome da equipe: ");
+			this.nome = Utils.entrada.nextLine();
+		} else if(result == 2) {
+			System.out.printf("Nova modalidade da equipe: ");
+			this.modalidade = Utils.entrada.nextLine();
+		} else if(result == 3) {
+			// chamar a função alterarAtleta do Yan
+		} else if(result == 4) {
+			int index3 = Utils.escolherTecnico(index, index2);
+			comissaoTecnica.get(index3).alterarTecnico(index, index2, index3);
+		} else {
+			System.out.println("Nenhuma alteração foi feita.");
+		}
+
 	}
 	
 	public Atleta removerAtletaDeEquipe(int indice) {

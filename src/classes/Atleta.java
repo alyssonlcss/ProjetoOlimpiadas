@@ -102,4 +102,5 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
         this.medalhas.add(Utils.entrada.nextInt());
         Utils.entrada.nextLine();
     }
+
 }

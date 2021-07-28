@@ -29,6 +29,18 @@ public class Utils {
 	        System.out.println("[4] Listar "    + nome + ".");
 	        System.out.println("[5] Buscar "    + nome + ".");
 	        System.out.println("[0] VOLTAR.                  ");
+			
+	    }
+
+		public static int menuAlterarEquipe() {
+	        System.out.println("[1] Nome.......................");
+	        System.out.println("[2] Modalidade.................");
+	        System.out.println("[3] ComitÃª.....................");
+	        System.out.println("[4] Atleta.....................");
+	        System.out.println("[0] CANCELAR...................");
+
+			System.out.printf("O que deseja alterar em equipe: ");
+			return entrada.nextInt();
 	    }
 
 		public static int escolhaComite() {
@@ -59,7 +71,7 @@ public class Utils {
 		public static int escolherEquipe(int indice) {
 			int i = 0;
 			for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
-				System.out.printf("[%d] %s\n",i, equipe.getNome());
+				System.out.printf("[%d] - %s\n",i, equipe.getNome());
 				i++;
 			}
 			System.out.println("Digite o número da Equipe desejada: ");
@@ -70,7 +82,7 @@ public class Utils {
 		public static int escolherAtleta(int indice1, int indice2) {
 			int i = 0;
 			for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
-				System.out.printf("[%d] %s\n",i, atleta.getNome());
+				System.out.printf("[%d] - %s\n",i, atleta.getNome());
 				i++;
 			}
 			System.out.println("Digite o número do Atleta desejado: ");
@@ -80,7 +92,7 @@ public class Utils {
 		public static int escolherTecnico(int indice1, int indice2) {
 			int i = 0;
 			for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()) {
-				System.out.printf("[%d] %s\n",i, tecnico.getNome());
+				System.out.printf("[%d] - %s\n",i, tecnico.getNome());
 				i++;
 			}
 			System.out.println("Digite o número do Técnico desejado: ");
