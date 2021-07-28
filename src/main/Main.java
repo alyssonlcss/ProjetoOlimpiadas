@@ -18,7 +18,7 @@ public class Main {
             
             if (opcao == 0) break;
             
-            int result;
+            int result, i , j;
             switch (opcao) {
                 case 1: // GERENCIAR COMITÊS [ok]
                     do {
@@ -81,18 +81,18 @@ public class Main {
                                 break;
                             case 2: // REMOVER EQUIPE [ok]
                                 result = Utils.escolhaComite();
-                                int i = Utils.escolherEquipe(result);
+                                i = Utils.escolherEquipe(result);
                                 ComiteOlimpico.getLista_comites().get(result).removerEquipeDoComite(i);
                                 break;
                             case 3: // ALTERAR EQUIPE - Alysson
                             result = Utils.escolhaComite();
                             i = Utils.escolherEquipe(result);
-                            ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).alterarEquipe();
+                            ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).alterarEquipe(result,i);
                                 break;
                             case 4: // LISTAR EQUIPE [ok]
                                 result = Utils.escolhaComite();
                                 i = Utils.escolherEquipe(result);
-                                ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).listarDados(result, i);
+                                ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).listarDados();
                                 break;
                             case 5: // BUSCAR EQUIPE [ok]
                             	 System.out.println("Digite o nome da Equipe que você deseja buscar: ");
@@ -106,8 +106,7 @@ public class Main {
                                      System.out.println("Equipe não encontrada!");
                                  }
                                 break;
-                            }
-                            
+                        }         
                     } while (opcao != 0);
                         break;
                     case 3: // GERENCIAR ATLETA
@@ -132,18 +131,18 @@ public class Main {
                                     break;
                                 case 2: // REMOVER ATLETA [ok]
                                 	result = Utils.escolhaComite();
-                                    int i = Utils.escolherEquipe(result);
-                                    int j = Utils.escolherAtleta(result, i);
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherAtleta(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerAtletaDeEquipe(j);
                                     break;
                                 case 3:
                                     result = Utils.escolhaComite();
-                                    int i = Utils.escolherEquipe(result);
-                                    int j = Utils.escolherAtleta(result, i);
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherAtleta(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).getAtletas().get(j).alterarAtleta();
                                     break;
                                 case 4:
-                                    // LISTAR ATLETA - Alysson
+                                    // LISTAR ATLETA - Mateus
                                     
                                     
 
@@ -187,8 +186,8 @@ public class Main {
                                     break;
                                 case 2:// REMOVER T�CNICO [ok]
                                 	result = Utils.escolhaComite();
-                                    int i = Utils.escolherEquipe(result);
-                                    int j = Utils.escolherTecnico(result, i);
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherTecnico(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerTecnicoDeEquipe(j);
                                     break;
                                 case 3: // ALTERAR T�CNICO [ok]
