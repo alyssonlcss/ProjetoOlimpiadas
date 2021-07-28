@@ -151,7 +151,6 @@ public class ComiteOlimpico implements OperacoesComuns{
 					System.out.println("\t\tOuro -> " + atleta.getMedalhas().get(0));
 					System.out.println("\t\tPrata -> " + atleta.getMedalhas().get(1));
 					System.out.println("\t\tBronze -> " + atleta.getMedalhas().get(2));
-
 				}
 			}
 		}

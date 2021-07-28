@@ -59,7 +59,7 @@ public class Utils {
 		public static int escolherEquipe(int indice) {
 			int i = 0;
 			for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
-				System.out.printf("[%d] %s\n",i, equipe.getNome());
+				System.out.printf("[%d] - %s\n",i, equipe.getNome());
 				i++;
 			}
 			System.out.println("Digite o número da Equipe desejada: ");
@@ -70,7 +70,7 @@ public class Utils {
 		public static int escolherAtleta(int indice1, int indice2) {
 			int i = 0;
 			for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
-				System.out.printf("[%d] %s\n",i, atleta.getNome());
+				System.out.printf("[%d] - %s\n",i, atleta.getNome());
 				i++;
 			}
 			System.out.println("Digite o número do Atleta desejado: ");
@@ -80,7 +80,7 @@ public class Utils {
 		public static int escolherTecnico(int indice1, int indice2) {
 			int i = 0;
 			for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()) {
-				System.out.printf("[%d] %s\n",i, tecnico.getNome());
+				System.out.printf("[%d] - %s\n",i, tecnico.getNome());
 				i++;
 			}
 			System.out.println("Digite o número do Técnico desejado: ");

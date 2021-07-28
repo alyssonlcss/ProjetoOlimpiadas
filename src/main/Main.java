@@ -135,10 +135,10 @@ public class Main {
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerAtletaDeEquipe(j);
                                     break;
                                 case 3:
-                                    // ALTERAR ATLETA 
+                                    // ALTERAR ATLETA - Yan
                                     break;
                                 case 4:
-                                    // LISTAR ATLETA						
+                                    // LISTAR ATLETA - Alysson				
                                     break;
                                 case 5: // BUSCAR ATLETA [ok]
 
@@ -183,10 +183,10 @@ public class Main {
                                     int j = Utils.escolherTecnico(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerTecnicoDeEquipe(j);
                                     break;
-                                case 3: // ALTERAR COMISSÃO
+                                case 3: // ALTERAR COMISSÃO - Mateus
                                     //
                                     break;
-                                case 4: // LISTAR COMISSÃO
+                                case 4: // LISTAR COMISSÃO - Bruno
                                     //						
                                     break;
                                 case 5: // BUSCAR COMISSÃO [ok]
