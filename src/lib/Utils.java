@@ -1,8 +1,11 @@
 package lib;
 
 import java.util.Scanner;
+
+import classes.Atleta;
 import classes.ComiteOlimpico;
 import classes.Equipe;
+import classes.Tecnico;
 
 public class Utils {
 		
@@ -60,6 +63,27 @@ public class Utils {
 				i++;
 			}
 			System.out.println("Digite o número da Equipe desejada: ");
+			return Utils.entrada.nextInt();
+		}
+		
+
+		public static int escolherAtleta(int indice1, int indice2) {
+			int i = 0;
+			for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
+				System.out.printf("[%d] %s\n",i, atleta.getNome());
+				i++;
+			}
+			System.out.println("Digite o número do Atleta desejado: ");
+			return Utils.entrada.nextInt();
+		}
+		
+		public static int escolherTecnico(int indice1, int indice2) {
+			int i = 0;
+			for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()) {
+				System.out.printf("[%d] %s\n",i, tecnico.getNome());
+				i++;
+			}
+			System.out.println("Digite o número do Técnico desejado: ");
 			return Utils.entrada.nextInt();
 		}
 }

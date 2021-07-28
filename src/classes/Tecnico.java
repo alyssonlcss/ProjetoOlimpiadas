@@ -1,6 +1,7 @@
 package classes;
 
 import interfaces.OperacoesComuns;
+import lib.Utils;
 
 public class Tecnico implements OperacoesComuns{
 	private String nome;
@@ -25,17 +26,24 @@ public class Tecnico implements OperacoesComuns{
 	@Override
 	public void adicionar() {
 		
+		System.out.printf("Digite o nome do Técnico: ");
+		this.nome = Utils.entrada.nextLine();
+		System.out.printf("Digite o cargo do Técnico: ");
+		this.cargo = Utils.entrada.nextLine(); 
 		
 	}
-
-	@Override
-	public boolean remover(int indice) {
-		
-		return false;
-	}
-
-	public static String buscar(String nome) {
 	
+	public static Tecnico buscar(String nome) {
+	
+		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+			for (Equipe equipe : comite.getEquipe()) {
+				for (Tecnico tecnico : equipe.getComissaoTecnica()) {
+					if (tecnico.getNome().equalsIgnoreCase(nome)) {
+						return tecnico;
+					}
+				}
+			}
+		}
 		return null;
 	}
 

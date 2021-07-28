@@ -45,21 +45,13 @@ public class Atleta implements OperacoesComuns {
 		System.out.printf("Digite o sexo do Atleta: ");
 		this.sexo = Utils.entrada.nextLine(); 
 		
-		while (true) {
-			System.out.printf("\nDeseja adicionar Medalhas agora? digite... 'sim' ou 'não' caso contrário: ");
-			temporario = Utils.entrada.nextLine(); 
+		
+		System.out.printf("\nDeseja adicionar Medalhas agora? digite... 'sim' ou 'não' caso contrário: ");
+		temporario = Utils.entrada.nextLine(); 
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarMedalhasDoAtleta();
-			else if (temporario.equalsIgnoreCase("não")) break;
-			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
-		}
+		if (temporario.equalsIgnoreCase("sim")) this.adicionarMedalhasDoAtleta();
 	}
 
-	@Override
-	public boolean remover(int indice) {
-		return false;
-	}
-	
 	@Override
 	public void listarDados() {
 		
@@ -69,7 +61,17 @@ public class Atleta implements OperacoesComuns {
 		
 	}
 	
-	public static String buscar(String nome) {
+	public static Atleta buscar(String nome) {
+
+		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+			for (Equipe equipe : comite.getEquipe()) {
+				for (Atleta atleta : equipe.getAtletas()) {
+					if (atleta.getNome().equalsIgnoreCase(nome)) {
+						return atleta;
+					}
+				}
+			}
+		}
 		return null;
 	}
 
