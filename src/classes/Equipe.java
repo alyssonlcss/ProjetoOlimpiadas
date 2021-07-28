@@ -145,7 +145,7 @@ public class Equipe implements OperacoesComuns{
 			System.out.printf("Nova modalidade da equipe: ");
 			this.modalidade = Utils.entrada.nextLine();
 		} else if(result == 3) {
-			// chamar a função alterarAtleta do Yan
+			atletas.get(Utils.escolherAtleta(index, index2)).alterarAtleta();
 		} else if(result == 4) {
 			int index3 = Utils.escolherTecnico(index, index2);
 			comissaoTecnica.get(index3).alterarTecnico(index, index2, index3);
