@@ -10,6 +10,7 @@ public class Equipe implements OperacoesComuns{
 	
 	private String nome;
 	private String modalidade;
+	private ComiteOlimpico comite;
 	private ArrayList<Atleta> atletas = new ArrayList<>();
 	private ArrayList<Tecnico> comissaoTecnica = new ArrayList<>();
 	
@@ -29,6 +30,14 @@ public class Equipe implements OperacoesComuns{
 		this.modalidade = modalidade;
 	}
 	
+	public ComiteOlimpico getComite() {
+		return comite;
+	}
+
+	public void setComite(ComiteOlimpico comite) {
+		this.comite = comite;
+	}
+
 	public ArrayList<Atleta> getAtletas() {
 		return atletas;
 	}
@@ -53,7 +62,7 @@ public class Equipe implements OperacoesComuns{
 		this.nome = Utils.entrada.nextLine();
 		System.out.printf("Digite a modalidade da Equipe: ");
 		this.modalidade = Utils.entrada.nextLine();
-	
+		
 		
 		if (Utils.sinalizadora) {
 			System.out.println("\nEscolha um comitê para adicionar sua equipe!");
@@ -88,17 +97,10 @@ public class Equipe implements OperacoesComuns{
 		}
 	}
 
-	@Override
-	public boolean remover(int indice) {
-		
-		return false;
-	}
-
-
 	public static Equipe buscar(String nome) {
 		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
 			for (Equipe equipe : comite.getEquipe()) {
-				if (comite.getNome().equalsIgnoreCase(nome)) {
+				if (equipe.getNome().equalsIgnoreCase(nome)) {
 					return equipe;
 				}
 			}
@@ -108,15 +110,17 @@ public class Equipe implements OperacoesComuns{
 
 	@Override
 	public void listarDados() {	
-		System.out.println("Equipe(s) { \nnome=" + this.getNome() + ", " + "\nmodalidade=" + this.getModalidade() + "\n");
+		System.out.println("Equipe { \nnome=" + this.getNome() + ", " + "\nmodalidade=" + this.getModalidade() + "\n");
+
 		for (Atleta atleta : atletas) {
-			System.out.println("Atleta { \nnome=" + atleta.getNome() + ", " + "\nSexo=" + atleta.getSexo() + "\n");
+			System.out.println("\tAtleta { \n\tnome=" + atleta.getNome() + ", " + "\n\tSexo=" + atleta.getSexo() + "\n");
 		}
-		System.out.println("\n");
+		System.out.println("\n\t}");
 		for (Tecnico tecnico : comissaoTecnica) {
-			System.out.println("Técnico { \nnome=" + tecnico.getNome() + ", " + "\nCargo=" + tecnico.getCargo() + "\n");
+			System.out.println("\tTécnico { \n\tnome=" + tecnico.getNome() + ", " + "\n\tCargo=" + tecnico.getCargo() + "\n");
 		}
-		System.out.println("\n");
+		System.out.println("\n\t}");
+		System.out.println("}");
 	}
 	
 	public void adicionarAtletaEmEquipe() {
@@ -131,4 +135,11 @@ public class Equipe implements OperacoesComuns{
 		this.comissaoTecnica.add(tecnico);
 	}
 	
+	public Atleta removerAtletaDeEquipe(int indice) {
+		return this.atletas.remove(indice);
+	}
+	
+	public Tecnico removerTecnicoDeEquipe(int indice) {
+		return this.comissaoTecnica.remove(indice);
+	}
 }
