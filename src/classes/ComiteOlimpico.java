@@ -51,7 +51,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	
 	
 	@Override
-	public void adicionar(boolean sinalizadora) {
+	public void adicionar() {
 		String temporario;
 		
 		System.out.printf("Digite o nome do comitê: ");
@@ -63,14 +63,13 @@ public class ComiteOlimpico implements OperacoesComuns{
 			System.out.printf("\nDeseja adicionar alguma equipe? digite... 'sim' ou 'não' caso contrário: ");
 			temporario = Utils.entrada.nextLine();
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite(sinalizadora);
+			if (temporario.equalsIgnoreCase("sim"))      this.adicionarEquipeAoComite();
 			else if (temporario.equalsIgnoreCase("não")) break;
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
 	}
 
-	public boolean apurarEquipes_addAtleta(int indice) {
-			//escolhe a equipe e add atleta nela
+	public boolean elegerEquipeOndeAddAtleta(int indice) {
 			int result;
 			for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
 				System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
@@ -85,8 +84,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	}
 
 
-	public boolean apurarEquipes_addTecnico(int indice) {
-		//escolhe a equipe e add atleta nela
+	public boolean elegerEquipeOndeAddTecnico(int indice) {
 		int result;
 		for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {	
 			System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
@@ -125,9 +123,9 @@ public class ComiteOlimpico implements OperacoesComuns{
 	}
 
 	
-	public void adicionarEquipeAoComite(boolean sinalizadora) {
+	public void adicionarEquipeAoComite() {
 		Equipe equipe = new Equipe();
-		equipe.adicionar(sinalizadora);
+		equipe.adicionar();
 		this.equipes.add(equipe);
 	}
 	
@@ -141,10 +139,19 @@ public class ComiteOlimpico implements OperacoesComuns{
 		comite.setPais(Utils.entrada.nextLine());
 	}
 	
-	
-	public static boolean verificarExistenciaDeEquipes() {
-		for (ComiteOlimpico comite : lista_comites) {
-			if ()
+	public static void listarAtletasDosComites() {
+		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
+			System.out.println("Comitê - " + comite.getNome());
+			for (Equipe equipe : comite.getEquipe()){
+				System.out.println("\tEquipe - " + equipe.getNome());
+				for (Atleta atleta : equipe.getAtletas()) {
+					System.out.println("Atleta { \nnome=" + atleta.getNome());
+					System.out.println("\t\tOuro -> " + atleta.getMedalhas().get(0));
+					System.out.println("\t\tPrata -> " + atleta.getMedalhas().get(1));
+					System.out.println("\t\tBronze -> " + atleta.getMedalhas().get(2));
+
+				}
+			}
 		}
 	}
 }

@@ -1,13 +1,15 @@
 package lib;
 
 import java.util.Scanner;
-
 import classes.ComiteOlimpico;
+import classes.Equipe;
 
 public class Utils {
 		
 	   public static Scanner entrada  = new Scanner(System.in);
-	
+	   
+	   public static boolean sinalizadora;
+	   
 	   public static void menuPrincipal() {
 	        System.out.println("[1] Gerenciar Comitê...........");
 	        System.out.println("[2] Gerenciar Equipe...........");
@@ -49,4 +51,15 @@ public class Utils {
 				"Sua escolha: ");
 			return entrada.nextInt();
 	    }
+		
+		
+		public static int escolherEquipe(int indice) {
+			int i = 0;
+			for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
+				System.out.printf("[%d] %s\n",i, equipe.getNome());
+				i++;
+			}
+			System.out.println("Digite o número da Equipe desejada: ");
+			return Utils.entrada.nextInt();
+		}
 }

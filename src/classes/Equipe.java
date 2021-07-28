@@ -46,7 +46,7 @@ public class Equipe implements OperacoesComuns{
 	}
 
 	@Override
-	public void adicionar(boolean sinalizador) {
+	public void adicionar() {
 		String temporario;
 		
 		System.out.printf("Digite o nome da Equipe: ");
@@ -55,7 +55,7 @@ public class Equipe implements OperacoesComuns{
 		this.modalidade = Utils.entrada.nextLine();
 	
 		
-		if (sinalizador) {
+		if (Utils.sinalizadora) {
 			System.out.println("\nEscolha um comitê para adicionar sua equipe!");
 			System.out.println("Comitês disponíveis:");
 			int i = 0;
@@ -107,8 +107,16 @@ public class Equipe implements OperacoesComuns{
 	}
 
 	@Override
-	public void listarDados() {
-		
+	public void listarDados() {	
+		System.out.println("Equipe(s) { \nnome=" + this.getNome() + ", " + "\nmodalidade=" + this.getModalidade() + "\n");
+		for (Atleta atleta : atletas) {
+			System.out.println("Atleta { \nnome=" + atleta.getNome() + ", " + "\nSexo=" + atleta.getSexo() + "\n");
+		}
+		System.out.println("\n");
+		for (Tecnico tecnico : comissaoTecnica) {
+			System.out.println("Técnico { \nnome=" + tecnico.getNome() + ", " + "\nCargo=" + tecnico.getCargo() + "\n");
+		}
+		System.out.println("\n");
 	}
 	
 	public void adicionarAtletaEmEquipe() {
