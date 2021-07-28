@@ -136,7 +136,7 @@ public class Equipe implements OperacoesComuns{
 		this.comissaoTecnica.add(tecnico);
 	}
 
-	public void alterarEquipe() {
+	public void alterarEquipe(int index, int index2) {
 		int result = Utils.menuAlterarEquipe();
 		if(result == 1) {
 			System.out.printf("Novo nome da equipe: ");
@@ -145,9 +145,10 @@ public class Equipe implements OperacoesComuns{
 			System.out.printf("Nova modalidade da equipe: ");
 			this.modalidade = Utils.entrada.nextLine();
 		} else if(result == 3) {
-			// chamar a função alterarAtleta não finalizada
+			// chamar a função alterarAtleta do Yan
 		} else if(result == 4) {
-
+			int index3 = Utils.escolherTecnico(index, index2);
+			comissaoTecnica.get(index3).alterarTecnico(index, index2, index3);
 		} else {
 			System.out.println("Nenhuma alteração foi feita.");
 		}

@@ -14,10 +14,10 @@ public class Utils {
 	   public static boolean sinalizadora;
 	   
 	   public static void menuPrincipal() {
-	        System.out.println("[1] Gerenciar ComitÃª...........");
+	        System.out.println("[1] Gerenciar Comitê...........");
 	        System.out.println("[2] Gerenciar Equipe...........");
 	        System.out.println("[3] Gerenciar Atleta...........");
-	        System.out.println("[4] Gerenciar ComissÃ£o TÃ©cnica.");
+	        System.out.println("[4] Gerenciar ComissÃo Técnica.");
 	        System.out.println("[0] SAIR.......................");
 	    }
 	    
@@ -50,7 +50,7 @@ public class Utils {
 				i++;
 			}
 
-			System.out.printf("Digite o nÃºmero do comitÃª desejado: ");
+			System.out.printf("Digite o número do comitê desejado: ");
 			return entrada.nextInt();
 	    }
 
@@ -61,8 +61,8 @@ public class Utils {
 				i++;
 			}
 
-			System.out.printf("Digite o nÃºmero do comitÃª que a(o) "+ nome +" pertence," +"\n"+
-				"caso o comitÃª nÃ£o esteja na lista, digite '0'." +"\n"+
+			System.out.printf("Digite o número do comitê que a(o) "+ nome +" pertence," +"\n"+
+				"caso o comitê não esteja na lista, digite '0'." +"\n"+
 				"Sua escolha: ");
 			return entrada.nextInt();
 	    }
@@ -74,7 +74,7 @@ public class Utils {
 				System.out.printf("[%d] - %s\n",i, equipe.getNome());
 				i++;
 			}
-			System.out.println("Digite o nÃºmero da Equipe desejada: ");
+			System.out.println("Digite o número da Equipe desejada: ");
 			return Utils.entrada.nextInt();
 		}
 		
@@ -85,7 +85,7 @@ public class Utils {
 				System.out.printf("[%d] - %s\n",i, atleta.getNome());
 				i++;
 			}
-			System.out.println("Digite o nÃºmero do Atleta desejado: ");
+			System.out.println("Digite o número do Atleta desejado: ");
 			return Utils.entrada.nextInt();
 		}
 		
@@ -95,7 +95,7 @@ public class Utils {
 				System.out.printf("[%d] - %s\n",i, tecnico.getNome());
 				i++;
 			}
-			System.out.println("Digite o nÃºmero do TÃ©cnico desejado: ");
+			System.out.println("Digite o número do Técnico desejado: ");
 			return Utils.entrada.nextInt();
 		}
 }
