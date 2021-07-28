@@ -130,10 +130,10 @@ public class ComiteOlimpico implements OperacoesComuns{
 	public void alterarComite(int indice) {
 		ComiteOlimpico comite = lista_comites.get(indice);
 		
-		System.out.println("Digite o novo nome do comitÃª: "); Utils.entrada.nextLine();
+		System.out.println("Digite o novo nome do comitê: "); Utils.entrada.nextLine();
 		comite.setNome(Utils.entrada.nextLine());
 		
-		System.out.println("Digite o novo paÃ­s do comitÃª: ");
+		System.out.println("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
 	}
 	

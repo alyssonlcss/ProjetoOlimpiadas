@@ -15,10 +15,11 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     public String getSexo() {
         return sexo;
     }
+    
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-	
+    
     public ArrayList<Integer> getMedalhas() {
         return medalhas;
     }
