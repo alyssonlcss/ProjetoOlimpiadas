@@ -96,15 +96,13 @@ public class ComiteOlimpico implements OperacoesComuns{
 		if(result == 0) return false;
 		lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
 		return true;
-}
+	}
 	
-	@Override
-	public boolean remover(int indice) { 
+	public boolean removerComite(int indice) { 
 		return lista_comites.remove(lista_comites.get(indice));
 	}
 
 	public static ComiteOlimpico buscar(String nome) {
-		
 		for (ComiteOlimpico comite : lista_comites) {
 			if (nome.equalsIgnoreCase(comite.nome)) {
 				return comite;
@@ -139,6 +137,10 @@ public class ComiteOlimpico implements OperacoesComuns{
 		comite.setPais(Utils.entrada.nextLine());
 	}
 	
+	public Equipe removerEquipeDoComite(int indice) {
+		return this.equipes.remove(indice);
+	}
+		
 	public static void listarAtletasDosComites() {
 		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
 			System.out.println("Comitê - " + comite.getNome());
@@ -154,4 +156,6 @@ public class ComiteOlimpico implements OperacoesComuns{
 			}
 		}
 	}
+	
+	
 }
