@@ -22,41 +22,41 @@ public class Main {
             switch (opcao) {
                 case 1: // GERENCIAR COMITÃŠS [ok]
                     do {
-                        Utils.menu("ComitÃª");
-                        System.out.println("Entre com um opÃ§Ã£o: ");
+                        Utils.menu("Comitê");
+                        System.out.println("Entre com um opção: ");
                         opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
                         switch(opcao) {
-                            case 1: // ADICIONAR COMITÃŠ [ok]
+                            case 1: // ADICIONAR COMITÊ [ok]
                             	Utils.sinalizadora = false;
                                 ComiteOlimpico comite = new ComiteOlimpico();
                                 comite.adicionar();
                                 break;
-                            case 2: // REMOVER COMITÃŠ [ok]
+                            case 2: // REMOVER COMITÊ [ok]
                                 if(!ComiteOlimpico.getLista_comites().isEmpty()) {
                                     result = Utils.escolhaComite();
                                     ComiteOlimpico.getLista_comites().get(result).removerComite(result);                    	
                                     break;
                                 } else{
-                                    System.out.println("Lista de comitÃªs vazia!");
+                                    System.out.println("Lista de comitês vazia!");
                                 }
-                            case 3: // ALTERAR COMITÃŠ [ok]
+                            case 3: // ALTERAR COMITÊ [ok]
                                 result = Utils.escolhaComite();
                                 ComiteOlimpico.getLista_comites().get(result).alterarComite(result);
                                 break;
-                            case 4: // LISTAR COMITÃŠS [ok]
+                            case 4: // LISTAR COMITÊ [ok]
                                 result = Utils.escolhaComite();
                                 ComiteOlimpico.getLista_comites().get(result).listarDados(); 
                                 break;
-                            case 5: // BUSCAR COMITÃŠ [ok]
-                                System.out.println("Digite o nome do comitÃª que vocÃª deseja buscar: ");
+                            case 5: // BUSCAR COMITÊ [ok]
+                                System.out.println("Digite o nome do comitê que você deseja buscar: ");
                                 String nome = Utils.entrada.nextLine();
                                 ComiteOlimpico result_busca = ComiteOlimpico.buscar(nome);
                                 
                                 if (result_busca!= null) {
-                                    System.out.println("ComitÃª encontrado!");
+                                    System.out.println("Comitê encontrado!");
                                     result_busca.listarDados();
                                 } else {
-                                    System.out.println("ComitÃª nÃ£o encontrado!");
+                                    System.out.println("Comitê não encontrado!");
                                 }
                                 break;
                         }
@@ -66,7 +66,7 @@ public class Main {
                     do {
                         Utils.menu("Equipe");
                         
-                        System.out.println("Entre com um opÃ§Ã£o: ");
+                        System.out.println("Entre com um opção: ");
                         opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
                         
                         switch(opcao) {
@@ -112,7 +112,7 @@ public class Main {
                         do {
                             Utils.menu("Atleta");
                             
-                            System.out.println("Entre com um opÃ§Ã£o: ");
+                            System.out.println("Entre com um opação: ");
                             opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
                             
                             switch(opcao) {
@@ -126,7 +126,7 @@ public class Main {
                                         opcao = 0;
                                         break;
                                     }
-                                    System.out.println("NÃ£o foi possÃ­vel adicionar o atleta.");
+                                    System.out.println("Não foi possível adicionar o atleta.");
                                     break;
                                 case 2: // REMOVER ATLETA [ok]
                                 	result = Utils.escolhaComite();
@@ -142,7 +142,7 @@ public class Main {
                                     break;
                                 case 5: // BUSCAR ATLETA [ok]
 
-                                	 System.out.println("Digite o nome do Atleta que vocÃª deseja buscar: ");
+                                	 System.out.println("Digite o nome do Atleta que você deseja buscar: ");
                                      String nome = Utils.entrada.nextLine();
                                      Atleta result_busca = Atleta.buscar(nome);
                                      
@@ -150,7 +150,7 @@ public class Main {
                                          System.out.println("Atleta encontrado!");
                                          result_busca.listarDados();
                                      } else {
-                                         System.out.println("Atleta nÃ£o encontrada!");
+                                         System.out.println("Atleta não encontrada!");
                                      }
                                     break;
                             }
@@ -161,11 +161,11 @@ public class Main {
                     case 4:
     
                         do {
-                            Utils.menu("ComissÃ£o TÃ©cnica");
+                            Utils.menu("Comissão Técnica");
                         
                             switch(opcao) {
-                                case 1: // ADICIONAR COMISSÃƒO [ok]
-                                result = Utils.escolhaComite2("tÃ©cnico");
+                                case 1: // ADICIONAR TÉCNICO [ok]
+                                result = Utils.escolhaComite2("técnico");
                                 if(result == 0) {
                                     opcao = 0;
                                     break;
@@ -174,31 +174,34 @@ public class Main {
                                     opcao = 0;
                                     break;
                                 }
-                                System.out.println("NÃ£o foi possÃ­vel adicionar o tÃ©cnico.");
+                                System.out.println("Não foi possível adicionar o técnico.");
 
                                     break;
-                                case 2:// REMOVER COMISSÃƒO [ok]
+                                case 2:// REMOVER TÉCNICO [ok]
                                 	result = Utils.escolhaComite();
                                     int i = Utils.escolherEquipe(result);
                                     int j = Utils.escolherTecnico(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerTecnicoDeEquipe(j);
                                     break;
-                                case 3: // ALTERAR COMISSÃƒO
-                                    //
+                                case 3: // ALTERAR TÉCNICO [ok]
+                                	i = Utils.escolhaComite();
+                                	j = Utils.escolherEquipe(i);
+                                    result = Utils.escolherTecnico(i, j);
+                                    ComiteOlimpico.getLista_comites().get(i).getEquipe().get(j).getComissaoTecnica().get(result).alterarTecnico(i, j, result);
                                     break;
-                                case 4: // LISTAR COMISSÃƒO
+                                case 4: // LISTAR TÉCNICO
                                     //						
                                     break;
-                                case 5: // BUSCAR COMISSÃƒO [ok]
-                                	System.out.println("Digite o nome do Tenico que vocÃª deseja buscar: ");
+                                case 5: // BUSCAR COMISSÃO [ok]
+                                	System.out.println("Digite o nome do Tenico que você deseja buscar: ");
                                     String nome = Utils.entrada.nextLine();
                                     Tecnico result_busca = Tecnico.buscar(nome);
                                     
                                     if (result_busca != null) {
-                                        System.out.println("TÃ©cnico encontrado!");
+                                        System.out.println("Técnico encontrado!");
                                         result_busca.listarDados();
                                     } else {
-                                        System.out.println("TÃ©cnico nÃ£o encontrada!");
+                                        System.out.println("Técnico não encontrada!");
                                     }
                                     break;
                             }
