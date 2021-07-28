@@ -137,7 +137,10 @@ public class Main {
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerAtletaDeEquipe(j);
                                     break;
                                 case 3:
-                                    // ALTERAR ATLETA - Yan
+                                    result = Utils.escolhaComite();
+                                    int i = Utils.escolherEquipe(result);
+                                    int j = Utils.escolherAtleta(result, i);
+                                    ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).getAtletas().get(j).alterarAtleta();
                                     break;
                                 case 4:
                                     // LISTAR ATLETA - Alysson
