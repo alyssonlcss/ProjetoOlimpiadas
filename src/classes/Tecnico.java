@@ -3,7 +3,7 @@ package classes;
 import interfaces.OperacoesComuns;
 import lib.Utils;
 
-public class Tecnico implements OperacoesComuns{
+public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns{
 	private String nome;
 	private String cargo;
 	

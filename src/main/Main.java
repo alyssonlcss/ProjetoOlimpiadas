@@ -84,8 +84,10 @@ public class Main {
                                 int i = Utils.escolherEquipe(result);
                                 ComiteOlimpico.getLista_comites().get(result).removerEquipeDoComite(i);
                                 break;
-                            case 3: // ALTERAR EQUIPE
-                                //
+                            case 3: // ALTERAR EQUIPE - Alysson
+                            result = Utils.escolhaComite();
+                            i = Utils.escolherEquipe(result);
+                            ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).alterarEquipe();
                                 break;
                             case 4: // LISTAR EQUIPE [ok]
                                 result = Utils.escolhaComite();
@@ -138,7 +140,10 @@ public class Main {
                                     // ALTERAR ATLETA - Yan
                                     break;
                                 case 4:
-                                    // LISTAR ATLETA - Alysson				
+                                    // LISTAR ATLETA - Alysson
+                                    
+                                    
+
                                     break;
                                 case 5: // BUSCAR ATLETA [ok]
 
@@ -164,7 +169,7 @@ public class Main {
                             Utils.menu("Comissão Técnica");
                         
                             switch(opcao) {
-                                case 1: // ADICIONAR COMISSÃO [ok]
+                                case 1: // ADICIONAR TECNICO [ok]
                                 result = Utils.escolhaComite2("técnico");
                                 if(result == 0) {
                                     opcao = 0;
@@ -177,19 +182,19 @@ public class Main {
                                 System.out.println("Não foi possível adicionar o técnico.");
 
                                     break;
-                                case 2:// REMOVER COMISSÃO [ok]
+                                case 2:// REMOVER TECNICO [ok]
                                 	result = Utils.escolhaComite();
                                     int i = Utils.escolherEquipe(result);
                                     int j = Utils.escolherTecnico(result, i);
                                     ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).removerTecnicoDeEquipe(j);
                                     break;
-                                case 3: // ALTERAR COMISSÃO - Mateus
+                                case 3: // ALTERAR TECNICO - Mateus
                                     //
                                     break;
-                                case 4: // LISTAR COMISSÃO - Bruno
+                                case 4: // LISTAR TECNICO - Bruno
                                     //						
                                     break;
-                                case 5: // BUSCAR COMISSÃO [ok]
+                                case 5: // BUSCAR TECNICO [ok]
                                 	System.out.println("Digite o nome do Tenico que você deseja buscar: ");
                                     String nome = Utils.entrada.nextLine();
                                     Tecnico result_busca = Tecnico.buscar(nome);

@@ -5,8 +5,6 @@ public class CredenciadoOlimpico {
 	private String id;
 
 
-
-
 	public String getNome() {
 		return this.nome;
 	}

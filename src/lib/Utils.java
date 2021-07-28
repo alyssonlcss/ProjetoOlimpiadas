@@ -29,6 +29,18 @@ public class Utils {
 	        System.out.println("[4] Listar "    + nome + ".");
 	        System.out.println("[5] Buscar "    + nome + ".");
 	        System.out.println("[0] VOLTAR.                  ");
+			
+	    }
+
+		public static int menuAlterarEquipe() {
+	        System.out.println("[1] Nome.......................");
+	        System.out.println("[2] Modalidade.................");
+	        System.out.println("[3] Comitê.....................");
+	        System.out.println("[4] Atleta.....................");
+	        System.out.println("[0] CANCELAR...................");
+
+			System.out.printf("O que deseja alterar em equipe: ");
+			return entrada.nextInt();
 	    }
 
 		public static int escolhaComite() {

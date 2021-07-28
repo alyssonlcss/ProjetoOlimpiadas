@@ -12,7 +12,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 	private String pais;
 	private ArrayList<Equipe> equipes = new ArrayList<>();
 	private static ArrayList<ComiteOlimpico> lista_comites = new ArrayList<>();
-	
+
 	public ComiteOlimpico() {
 		lista_comites.add(this);
 	}
