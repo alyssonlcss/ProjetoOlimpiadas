@@ -14,7 +14,8 @@ public class Main {
             Utils.menuPrincipal();
             
             System.out.println("Entre com um opção: ");
-            int opcao = Utils.entrada.nextInt(); Utils.entrada.nextLine();
+            int opcao = Utils.entrada.nextInt();
+            Utils.entrada.nextLine();
             
             if (opcao == 0) break;
             
