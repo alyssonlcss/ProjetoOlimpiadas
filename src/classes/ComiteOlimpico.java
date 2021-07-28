@@ -133,7 +133,7 @@ public class ComiteOlimpico implements OperacoesComuns{
 		System.out.println("Digite o novo nome do comitê: "); Utils.entrada.nextLine();
 		comite.setNome(Utils.entrada.nextLine());
 		
-		System.out.println("Digite o novo paÃ­s do comitê: ");
+		System.out.println("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
 	}
 	
