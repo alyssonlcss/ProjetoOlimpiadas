@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import interfaces.OperacoesComuns;
 import lib.Utils;
 
-public class Atleta implements OperacoesComuns {
+public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
 	
 	private String nome;
 	private String sexo;
