@@ -143,9 +143,10 @@ public class Main {
                                     break;
                                 case 4:
                                     // LISTAR ATLETA - Mateus
-                                    
-                                    
-
+                                	result = Utils.escolhaComite();
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherAtleta(result, i);
+                                    ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).getAtletas().get(j).listarDados();
                                     break;
                                 case 5: // BUSCAR ATLETA [ok]
 

@@ -47,9 +47,13 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     }
 
     @Override
-    public void listarDados() {
-
-    }
+	public void listarDados() {
+		System.out.println("Atleta { \nnome=" + this.getNome() + ", " + "\nsexo=" + this.getSexo() + "\n");
+		
+		for (Integer medalha : medalhas) {
+			System.out.println("\tMedalhas { \n\tOuro=" + this.getMedalhas().get(0) + ", " + "\n\tPrata=" + this.getMedalhas().get(1) + ", " + "\n\tBronze" + this.getMedalhas().get(2)+"\n");
+		}
+	}
 
     public void alterarAtleta() {
         String sinalizadorNomeStr, sinalizadorSexoStr, sinalizadorMedalha;
