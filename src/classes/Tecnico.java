@@ -49,7 +49,7 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns{
 
 	@Override
 	public void listarDados() {
-			
+		System.out.println("Tecnico { \nnome=" + this.getNome() + ", " + "\ncargo=" + this.getCargo() + "\n");
 	}
 	
 	public void alterarTecnico(int indice1, int indice2, int indice3) {

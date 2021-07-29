@@ -143,9 +143,10 @@ public class Main {
                                     break;
                                 case 4:
                                     // LISTAR ATLETA - Mateus
-                                    
-                                    
-
+                                	result = Utils.escolhaComite();
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherAtleta(result, i);
+                                    ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).getAtletas().get(j).listarDados();
                                     break;
                                 case 5: // BUSCAR ATLETA [ok]
 
@@ -196,10 +197,14 @@ public class Main {
                                     result = Utils.escolherTecnico(i, j);
                                     ComiteOlimpico.getLista_comites().get(i).getEquipe().get(j).getComissaoTecnica().get(result).alterarTecnico(i, j, result);
                                     break;
-                                case 4: // LISTAR Tï¿½CNICO
-                                    //						
+                                case 4: // LISTAR TÉCNICO
+                                    //
+                                	result = Utils.escolhaComite();
+                                    i = Utils.escolherEquipe(result);
+                                    j = Utils.escolherTecnico(result, i);
+                                    ComiteOlimpico.getLista_comites().get(result).getEquipe().get(i).getComissaoTecnica().get(j).listarDados();
                                     break;
-                                case 5: // BUSCAR COMISSï¿½O [ok]
+                                case 5: // BUSCAR COMISSÇÃO [ok]
                                 	System.out.println("Digite o nome do Tenico que vocï¿½ deseja buscar: ");
                                     String nome = Utils.entrada.nextLine();
                                     Tecnico result_busca = Tecnico.buscar(nome);
