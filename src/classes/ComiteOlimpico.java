@@ -58,12 +58,12 @@ public class ComiteOlimpico implements OperacoesComuns {
 		this.pais = Utils.entrada.nextLine();
 
 		while (true) {
-			System.out.print("\nDeseja adicionar alguma equipe? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.print("\nDeseja adicionar alguma equipe? digite... 's' ou 'n': ");
 			temporario = Utils.entrada.nextLine();
 
-			if (temporario.equalsIgnoreCase("sim"))
+			if (temporario.equalsIgnoreCase("s"))
 				this.adicionarEquipeAoComite();
-			else if (temporario.equalsIgnoreCase("não"))
+			else if (temporario.equalsIgnoreCase("n"))
 				break;
 			else
 				System.out.println("Você digitou uma opção inválida! Digite novamente.");
@@ -130,11 +130,11 @@ public class ComiteOlimpico implements OperacoesComuns {
 	public void alterarComite(int indice) {
 		ComiteOlimpico comite = lista_comites.get(indice);
 
-		System.out.println("Digite o novo nome do comit�: ");
+		System.out.println("Digite o novo nome do comitê: ");
 		Utils.entrada.nextLine();
 		comite.setNome(Utils.entrada.nextLine());
 
-		System.out.println("Digite o novo pa�s do comit�: ");
+		System.out.println("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
 	}
 

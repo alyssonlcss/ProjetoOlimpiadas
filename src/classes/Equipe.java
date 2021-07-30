@@ -80,20 +80,20 @@ public class Equipe implements OperacoesComuns{
 		}
 		
 		while (true) {
-			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? digite... 's' ou 'n': ");
 			temporario = Utils.entrada.nextLine();
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarAtletaEmEquipe();
-			else if (temporario.equalsIgnoreCase("não")) break;
+			if (temporario.equalsIgnoreCase("s"))      this.adicionarAtletaEmEquipe();
+			else if (temporario.equalsIgnoreCase("n")) break;
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
 		
 		while (true) {
-			System.out.printf("\nVocê deseja também adicionar um Técnico agora? digite... 'sim' ou 'não' caso contrário: ");
+			System.out.printf("\nVocê deseja também adicionar um Técnico agora? digite... 's' ou 'n': ");
 			temporario = Utils.entrada.nextLine();
 			
-			if (temporario.equalsIgnoreCase("sim"))      this.adicionarTecnicoEmEquipe();
-			else if (temporario.equalsIgnoreCase("não")) break;
+			if (temporario.equalsIgnoreCase("s"))      this.adicionarTecnicoEmEquipe();
+			else if (temporario.equalsIgnoreCase("n")) break;
 			else                                         System.out.println("Você digitou uma opção inválida! Digite novamente.");
 		}
 	}

@@ -1,15 +1,15 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 import interfaces.OperacoesComuns;
 import lib.Utils;
 import java.util.Random;
 
 public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
 
-    private String nome;
     private String sexo;
-    private int id;
     private ArrayList<Integer> medalhas = new ArrayList<>();
 
     public String getSexo() {
@@ -36,13 +36,12 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
         super.setNome(Utils.entrada.nextLine());
         System.out.print("Digite o sexo do Atleta: ");
         this.setSexo(Utils.entrada.nextLine());
-        System.out.print("Digite o id do atleta: ");
         super.setId(new Random().nextInt(30000));
 
-        System.out.print("\nDeseja adicionar Medalhas agora? digite... 'sim' ou 'não' caso contrário: ");
+        System.out.print("\nDeseja adicionar Medalhas agora? digite... 's' ou 'n': ");
         temporario = Utils.entrada.nextLine();
 
-        if (temporario.equalsIgnoreCase("sim"))
+        if (temporario.equalsIgnoreCase("s"))
             this.adicionarMedalhasDoAtleta();
     }
 
@@ -115,15 +114,39 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     }
 
     public void adicionarMedalhasDoAtleta() {
+        boolean sinaliza = true;
+        while (sinaliza) {
+            try {
+                System.out.print("Digite a quantidade da medalha de Ouro: ");
+                this.medalhas.add(Integer.parseInt(Utils.entrada.nextLine()));
+                sinaliza = false;
+            } catch(NumberFormatException e) {
+                System.out.println("Digite apenas números inteiros positivos!");
+                sinaliza = true;
+            } 
+        }
 
-        System.out.print("Digite a quantidade da medalha de Ouro: ");
-        this.medalhas.add(Utils.entrada.nextInt());
-
-        System.out.print("Digite a quantidade da medalha de Prata: ");
-        this.medalhas.add(Utils.entrada.nextInt());
-
-        System.out.print("Digite a quantidade da medalha de Bronze: ");
-        this.medalhas.add(Utils.entrada.nextInt());
-        Utils.entrada.nextLine();
+        sinaliza = true;
+        while (sinaliza) {
+            try {
+                System.out.print("Digite a quantidade da medalha de Prata: ");
+                this.medalhas.add(Integer.parseInt(Utils.entrada.nextLine()));
+                sinaliza = false;
+            } catch(NumberFormatException e) {
+                System.out.println("Digite apenas números inteiros positivos!");
+                sinaliza = true;
+            }
+        }
+        sinaliza = true;
+        while (sinaliza) {
+             try {
+                System.out.print("Digite a quantidade da medalha de Bronze: ");
+                this.medalhas.add(Integer.parseInt(Utils.entrada.nextLine()));
+                sinaliza = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Digite apenas números inteiros positivos!");
+                sinaliza = true;
+            }
+        }
     }
 }
