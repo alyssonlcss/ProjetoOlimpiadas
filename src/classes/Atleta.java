@@ -15,11 +15,11 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     public String getSexo() {
         return sexo;
     }
-    
+
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
+
     public ArrayList<Integer> getMedalhas() {
         return medalhas;
     }
@@ -47,28 +47,29 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     }
 
     @Override
-	public void listarDados() {
-		System.out.println("Atleta { \nnome=" + this.getNome() + ", " + "\nsexo=" + this.getSexo() + "\n");
-		
-		for (Integer medalha : medalhas) {
-			System.out.println("\tMedalhas { \n\tOuro=" + this.getMedalhas().get(0) + ", " + "\n\tPrata=" + this.getMedalhas().get(1) + ", " + "\n\tBronze" + this.getMedalhas().get(2)+"\n");
-		}
-	}
+    public void listarDados() {
+        System.out.println("Atleta { \nnome=" + this.getNome() + ", " + "\nsexo=" + this.getSexo() + "\n");
+
+        for (Integer medalha : medalhas) {
+            System.out.println("\tMedalhas { \n\tOuro=" + this.getMedalhas().get(0) + ", " + "\n\tPrata="
+                    + this.getMedalhas().get(1) + ", " + "\n\tBronze" + this.getMedalhas().get(2) + "\n");
+        }
+    }
 
     public void alterarAtleta() {
         String sinalizadorNomeStr, sinalizadorSexoStr, sinalizadorMedalha;
         System.out.print("Deseja alterar o nome do atleta? [Y/N] ");
         sinalizadorNomeStr = Utils.entrada.nextLine().toLowerCase();
 
-        if(sinalizadorNomeStr == "y") {
+        if (sinalizadorNomeStr == "y") {
             System.out.print("Digite um novo nome: ");
             super.setNome(Utils.entrada.nextLine());
-        } 
+        }
 
         System.out.print("Deseja alterar o sexo do atleta? [Y/N]");
         sinalizadorSexoStr = Utils.entrada.nextLine().toLowerCase();
 
-        if(sinalizadorSexoStr == "y") {
+        if (sinalizadorSexoStr == "y") {
             System.out.print("Digite o sexo: ");
             this.setSexo(Utils.entrada.nextLine());
         }
