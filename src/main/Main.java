@@ -1,7 +1,5 @@
 package main;
 
-import java.util.InputMismatchException;
-
 import classes.Atleta;
 import classes.ComiteOlimpico;
 import classes.Equipe;
@@ -31,16 +29,17 @@ public class Main {
             switch (opcao) {
                 case 1: // GERENCIAR COMITÊS [ok]
                     do {
-                        Utils.menu("Comit�");
+                        Utils.menu("Comitê");
                         
                         try {
-                        	System.out.println("Entre com um op��o: ");
+                        	System.out.println("Entre com um opção: ");
                         	opcao = Utils.entrada.nextInt();
                         	Utils.entrada.nextLine();
                         	
                         } catch(Exception e) {
                         	System.out.println("Você pode digitar somente números!");
                         	Utils.entrada.nextLine();
+                        	continue;
                         }
                         switch (opcao) {
                             case 1: // ADICIONAR COMIT� [ok]
@@ -54,7 +53,7 @@ public class Main {
                                     ComiteOlimpico.getLista_comites().get(result-1).removerComite(result-1);
                                     break;
                                 } else {
-                                    System.out.println("Lista de comit�s vazia!");
+                                    System.out.println("Lista de comitês vazia!");
                                 }
                             case 3: // ALTERAR COMIT� [ok]
                                 result = Utils.escolhaComite();
@@ -65,15 +64,15 @@ public class Main {
                                 ComiteOlimpico.getLista_comites().get(result-1).listarDados();
                                 break;
                             case 5: // BUSCAR COMIT� [ok]
-                                System.out.println("Digite o nome do comit� que voc� deseja buscar: ");
+                                System.out.println("Digite o nome do comitê que você deseja buscar: ");
                                 String nome = Utils.entrada.nextLine();
                                 ComiteOlimpico result_busca = ComiteOlimpico.buscar(nome);
 
                                 if (result_busca != null) {
-                                    System.out.println("Comit� encontrado!");
+                                    System.out.println("Comitê encontrado!");
                                     result_busca.listarDados();
                                 } else {
-                                    System.out.println("Comit� n�o encontrado!");
+                                    System.out.println("Comitê não encontrado!");
                                 }
                                 break;
                         }
@@ -83,7 +82,7 @@ public class Main {
                     do {
                         Utils.menu("Equipe");
 
-                        System.out.println("Entre com um op��o: ");
+                        System.out.println("Entre com um opão: ");
                         opcao = Utils.entrada.nextInt();
                         Utils.entrada.nextLine();
 
@@ -132,7 +131,7 @@ public class Main {
                     do {
                         Utils.menu("Atleta");
 
-                        System.out.println("Entre com um opa��o: ");
+                        System.out.println("Entre com um opção: ");
                         opcao = Utils.entrada.nextInt();
                         Utils.entrada.nextLine();
 
@@ -147,7 +146,7 @@ public class Main {
                                     opcao = 0;
                                     break;
                                 }
-                                System.out.println("N�o foi poss�vel adicionar o atleta.");
+                                System.out.println("Não foi possível adicionar o atleta.");
                                 break;
                             case 2: // REMOVER ATLETA [ok]
                                 result = Utils.escolhaComite();
@@ -173,7 +172,7 @@ public class Main {
                                 break;
                             case 5: // BUSCAR ATLETA [ok]
 
-                                System.out.println("Digite o nome do Atleta que voc� deseja buscar: ");
+                                System.out.println("Digite o nome do Atleta que você deseja buscar: ");
                                 String nome = Utils.entrada.nextLine();
                                 Atleta result_busca = Atleta.buscar(nome);
 
@@ -181,7 +180,7 @@ public class Main {
                                     System.out.println("Atleta encontrado!");
                                     result_busca.listarDados();
                                 } else {
-                                    System.out.println("Atleta n�o encontrada!");
+                                    System.out.println("Atleta não encontrada!");
                                 }
                                 break;
                         }
@@ -192,7 +191,7 @@ public class Main {
                 case 4:
 
                     do {
-                        Utils.menu("Comiss�o T�cnica");
+                        Utils.menu("Comissão Técnica");
 
                         switch (opcao) {
                             case 1: // ADICIONAR T�CNICO [ok]
