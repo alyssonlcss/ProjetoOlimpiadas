@@ -61,23 +61,42 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
         System.out.print("Deseja alterar o nome do atleta? [Y/N] ");
         sinalizadorNomeStr = Utils.entrada.nextLine().toLowerCase();
 
-        if (sinalizadorNomeStr == "y") {
-            System.out.print("Digite um novo nome: ");
-            super.setNome(Utils.entrada.nextLine());
+        try {
+            if (sinalizadorNomeStr == "y") {
+                System.out.print("Digite um novo nome: ");
+                super.setNome(Utils.entrada.nextLine());
+            } else {
+                ;
+            }
+        } catch (Exception e) {
+            System.out.println("Entrada válida apenas para texto!");
         }
 
         System.out.print("Deseja alterar o sexo do atleta? [Y/N]");
         sinalizadorSexoStr = Utils.entrada.nextLine().toLowerCase();
 
-        if (sinalizadorSexoStr == "y") {
-            System.out.print("Digite o sexo: ");
-            this.setSexo(Utils.entrada.nextLine());
+        try {
+            if (sinalizadorSexoStr == "y") {
+                System.out.print("Digite o sexo: ");
+                this.setSexo(Utils.entrada.nextLine());
+            } else {
+                ;
+            }
+        } catch (Exception e) {
+            System.out.println("Entrada válida apenas para texto!");
         }
 
         System.out.print("Deseja mudar a quantidade de medalhas? [Y/N] ");
-        sinalizadorMedalha = Utils.entrada.nextLine();
-        if (sinalizadorMedalha == "y") {
-            this.adicionarMedalhasDoAtleta();
+
+        try {
+            sinalizadorMedalha = Utils.entrada.nextLine();
+            if (sinalizadorMedalha == "y") {
+                this.adicionarMedalhasDoAtleta();
+            } else {
+                ;
+            }
+        } catch (Exception e) {
+            System.out.println("Entrada válida apenas para texto!");
         }
     }
 
@@ -107,5 +126,4 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
         this.medalhas.add(Utils.entrada.nextInt());
         Utils.entrada.nextLine();
     }
-
 }
