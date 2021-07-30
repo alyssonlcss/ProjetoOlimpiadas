@@ -15,10 +15,10 @@ public class Utils {
 	public static boolean sinalizadora;
 
 	public static void menuPrincipal() {
-		System.out.println("[1] Gerenciar Comit�...........");
+		System.out.println("[1] Gerenciar Comitê...........");
 		System.out.println("[2] Gerenciar Equipe...........");
 		System.out.println("[3] Gerenciar Atleta...........");
-		System.out.println("[4] Gerenciar Comiss�o T�cnica.");
+		System.out.println("[4] Gerenciar Comissão T�cnica.");
 		System.out.println("[0] SAIR.......................");
 	}
 
@@ -54,7 +54,7 @@ public class Utils {
 			i++;
 		}
 		try {
-			System.out.print("Digite o n�mero do comit� desejado: ");
+			System.out.print("Digite o n�mero do comitê desejado: ");
 			return entrada.nextInt();
 		} catch(InputMismatchException e) {
 			System.out.println("Você só pode digitar número");
@@ -70,8 +70,8 @@ public class Utils {
 		}
 		
 		try {
-			System.out.print("Digite o n�mero do comit� que a(o) " + nome + " pertence," + "\n"
-				+ "caso o comit� n�o esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
+			System.out.print("Digite o n�mero do comitê que a(o) " + nome + " pertence," + "\n"
+				+ "caso o comitê n�o esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
 			return entrada.nextInt();
 		} catch(InputMismatchException e) {
 			System.out.println("Você só pode digitar número");
