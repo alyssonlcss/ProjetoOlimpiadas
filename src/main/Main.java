@@ -15,18 +15,15 @@ public class Main {
         while (true) {
             Utils.menuPrincipal();
 
-            boolean sinal = true;
-
             int opcao = 0;
 
-            while (sinal) {
-                try {
-                    System.out.println("Entre com um opção: ");
-                    opcao = Integer.parseInt(Utils.entrada.nextLine());
-                    sinal = false;
-                } catch (NumberFormatException e) {
-                    System.out.println("Você pode digitar somente números!");
-                }
+            try {
+                System.out.println("Entre com um opção: ");
+                opcao = Integer.parseInt(Utils.entrada.nextLine());
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Você só pode digitar somente números!");
+                continue;
             }
 
             if (opcao == 0) break;
@@ -36,11 +33,15 @@ public class Main {
                 case 1: // GERENCIAR COMITÊS [ok]
                     do {
                         Utils.menu("Comit�");
-                        sinal = true;
-                        while (sinal) {
-                            System.out.println("Entre com um op��o: ");
-                            opcao = Utils.entrada.nextInt();
-                            Utils.entrada.nextLine();
+                        
+                        try {
+                        	System.out.println("Entre com um op��o: ");
+                        	opcao = Utils.entrada.nextInt();
+                        	Utils.entrada.nextLine();
+                        	
+                        } catch(Exception e) {
+                        	System.out.println("Você pode digitar somente números!");
+                        	Utils.entrada.nextLine();
                         }
                         switch (opcao) {
                             case 1: // ADICIONAR COMIT� [ok]

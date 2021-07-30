@@ -1,5 +1,6 @@
 package lib;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import classes.Atleta;
@@ -42,61 +43,85 @@ public class Utils {
 			return entrada.nextInt();
 		} catch (Exception e) {
 			System.out.println("Você só pode digitar número referentes a opção!");
-			return 1;
+			return 0;
 		}
 	}
 
 	public static int escolhaComite() {
-		int i = 0;
+		int i = 1;
 		for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
 			System.out.printf("[%d] - %s\n", i, c.getNome());
 			i++;
 		}
-
-		System.out.print("Digite o n�mero do comit� desejado: ");
-		return entrada.nextInt();
+		try {
+			System.out.print("Digite o n�mero do comit� desejado: ");
+			return entrada.nextInt();
+		} catch(InputMismatchException e) {
+			System.out.println("Você só pode digitar número");
+			return 0;
+		}
 	}
 
 	public static int escolhaComite2(String nome) {
-		int i = 0;
+		int i = 1;
 		for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
 			System.out.printf("[%d] - %s\n", i, c.getNome());
 			i++;
 		}
-
-		System.out.print("Digite o n�mero do comit� que a(o) " + nome + " pertence," + "\n"
+		
+		try {
+			System.out.print("Digite o n�mero do comit� que a(o) " + nome + " pertence," + "\n"
 				+ "caso o comit� n�o esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
-		return entrada.nextInt();
+			return entrada.nextInt();
+		} catch(InputMismatchException e) {
+			System.out.println("Você só pode digitar número");
+			return 0;
+		}
 	}
 
 	public static int escolherEquipe(int indice) {
-		int i = 0;
+		int i = 1;
 		for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
 			System.out.printf("[%d] - %s\n", i, equipe.getNome());
 			i++;
 		}
-		System.out.println("Digite o n�mero da Equipe desejada: ");
-		return Utils.entrada.nextInt();
+		try {
+			System.out.println("Digite o n�mero da Equipe desejada: ");
+			return Utils.entrada.nextInt();
+		} catch(InputMismatchException e) {
+			System.out.println("Você só pode digitar número");
+			return 0;
+		}
 	}
 
 	public static int escolherAtleta(int indice1, int indice2) {
-		int i = 0;
+		int i = 1;
 		for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
 			System.out.printf("[%d] - %s\n", i, atleta.getNome());
 			i++;
 		}
-		System.out.println("Digite o n�mero do Atleta desejado: ");
-		return Utils.entrada.nextInt();
+		try {
+			System.out.println("Digite o n�mero do Atleta desejado: ");
+			return Utils.entrada.nextInt();
+		} catch(InputMismatchException e) {
+			System.out.println("Você só pode digitar número");
+			return 0;
+		}
 	}
 
 	public static int escolherTecnico(int indice1, int indice2) {
-		int i = 0;
+		int i = 1;
 		for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2)
 				.getComissaoTecnica()) {
 			System.out.printf("[%d] - %s\n", i, tecnico.getNome());
 			i++;
 		}
 		System.out.println("Digite o n�mero do T�cnico desejado: ");
-		return Utils.entrada.nextInt();
+		try {
+			return Utils.entrada.nextInt();
+		} catch(InputMismatchException e) {
+			System.out.println("Você só pode digitar número");
+			return 0;
+		}
 	}
 }
