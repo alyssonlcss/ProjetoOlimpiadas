@@ -50,7 +50,7 @@ public class Utils {
 	public static int escolhaComite() {
 		int i = 1;
 		for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
-			System.out.printf("[%d] - %s\n", i, c.getNome());
+			System.out.printf("[%d] - %s\n", i+1, c.getNome());
 			i++;
 		}
 		try {
@@ -65,7 +65,7 @@ public class Utils {
 	public static int escolhaComite2(String nome) {
 		int i = 1;
 		for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
-			System.out.printf("[%d] - %s\n", i, c.getNome());
+			System.out.printf("[%d] - %s\n", i+1, c.getNome());
 			i++;
 		}
 		
@@ -82,7 +82,7 @@ public class Utils {
 	public static int escolherEquipe(int indice) {
 		int i = 1;
 		for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
-			System.out.printf("[%d] - %s\n", i, equipe.getNome());
+			System.out.printf("[%d] - %s\n", i+1, equipe.getNome());
 			i++;
 		}
 		try {
@@ -97,7 +97,7 @@ public class Utils {
 	public static int escolherAtleta(int indice1, int indice2) {
 		int i = 1;
 		for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
-			System.out.printf("[%d] - %s\n", i, atleta.getNome());
+			System.out.printf("[%d] - %s\n", i+1, atleta.getNome());
 			i++;
 		}
 		try {
@@ -113,7 +113,7 @@ public class Utils {
 		int i = 1;
 		for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2)
 				.getComissaoTecnica()) {
-			System.out.printf("[%d] - %s\n", i, tecnico.getNome());
+			System.out.printf("[%d] - %s\n", i+1, tecnico.getNome());
 			i++;
 		}
 		System.out.println("Digite o n�mero do T�cnico desejado: ");
