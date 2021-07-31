@@ -32,7 +32,6 @@ public class Main {
                 case 1: // GERENCIAR COMITÊS [ok]
                     do {
                         Utils.menu("Comit�");
-<<<<<<< HEAD
                         
                         try {
                         	System.out.println("Entre com um op��o: ");
@@ -42,18 +41,6 @@ public class Main {
                         } catch(Exception e) {
                         	System.out.println("Você pode digitar somente números!");
                         	Utils.entrada.nextLine();
-=======
-                        sinal = true;
-                        while (sinal) {
-                            try {
-                                System.out.println("Entre com um op��o: ");
-                                opcao = Integer.parseInt(Utils.entrada.nextLine());
-                                sinal = false;
-                            } catch(NumberFormatException e) {
-                                System.out.println("Você pode digitar somente números!");
-                            }
-
->>>>>>> 5236da8fb9cba6f3a8391be20c17e6dfff5c1aa8
                         }
                         switch (opcao) {
                             case 1: // ADICIONAR COMIT� [ok]
