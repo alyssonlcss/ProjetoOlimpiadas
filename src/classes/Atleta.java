@@ -1,7 +1,6 @@
 package classes;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 import interfaces.OperacoesComuns;
 import lib.Utils;
@@ -11,6 +10,7 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
 
     private String sexo;
     private ArrayList<Integer> medalhas = new ArrayList<>();
+
 
     public String getSexo() {
         return sexo;
@@ -31,69 +31,66 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
     @Override
     public void adicionar() {
         String temporario;
-
+        
         System.out.print("Digite o nome do Atleta: ");
         super.setNome(Utils.entrada.nextLine());
         System.out.print("Digite o sexo do Atleta: ");
         this.setSexo(Utils.entrada.nextLine());
         super.setId(new Random().nextInt(30000));
+        
+        while (true) {
+            System.out.print("\nDeseja adicionar Medalhas agora? [s/n]: ");
+            temporario = Utils.entrada.nextLine();
 
-        System.out.print("\nDeseja adicionar Medalhas agora? digite... 's' ou 'n': ");
-        temporario = Utils.entrada.nextLine();
-
-        if (temporario.equalsIgnoreCase("s"))
-            this.adicionarMedalhasDoAtleta();
+            if (temporario.equalsIgnoreCase("s")) {
+                this.adicionarMedalhasDoAtleta();
+                break;
+            } else if (temporario.equalsIgnoreCase("n")) {
+                break;
+            } else {
+				System.out.println("Você digitou uma opção inválida! Digite novamente.");
+            }
+        }
     }
 
     @Override
     public void listarDados() {
         System.out.println("Atleta { \nnome=" + this.getNome() + ", " + "\nsexo=" + this.getSexo() + "\n");
 
-        for (Integer medalha : medalhas) {
-            System.out.println("\tMedalhas { \n\tOuro=" + this.getMedalhas().get(0) + ", " + "\n\tPrata="
-                    + this.getMedalhas().get(1) + ", " + "\n\tBronze" + this.getMedalhas().get(2) + "\n");
-        }
+        System.out.println("\tMedalhas { \n\tOuro=" + this.getMedalhas().get(0) + ", " + "\n\tPrata="
+            + this.getMedalhas().get(1) + ", " + "\n\tBronze" + this.getMedalhas().get(2) + "\n");
     }
 
     public void alterarAtleta() {
-        String sinalizadorNomeStr, sinalizadorSexoStr, sinalizadorMedalha;
-        System.out.print("Deseja alterar o nome do atleta? [Y/N] ");
-        sinalizadorNomeStr = Utils.entrada.nextLine().toLowerCase();
 
+        System.out.print("Deseja alterar o nome do atleta? [s/n] ");
+        String sinal = Utils.entrada.nextLine().toLowerCase();
         try {
-            if (sinalizadorNomeStr == "y") {
+            if (sinal.equals("s")) {
                 System.out.print("Digite um novo nome: ");
                 super.setNome(Utils.entrada.nextLine());
-            } else {
-                ;
             }
         } catch (Exception e) {
             System.out.println("Entrada válida apenas para texto!");
         }
 
-        System.out.print("Deseja alterar o sexo do atleta? [Y/N]");
-        sinalizadorSexoStr = Utils.entrada.nextLine().toLowerCase();
-
+        System.out.print("Deseja alterar o sexo do atleta? [s/n]: ");
+        sinal = Utils.entrada.nextLine().toLowerCase();
         try {
-            if (sinalizadorSexoStr == "y") {
+            if (sinal.equals("s")) {
                 System.out.print("Digite o sexo: ");
                 this.setSexo(Utils.entrada.nextLine());
-            } else {
-                ;
             }
         } catch (Exception e) {
             System.out.println("Entrada válida apenas para texto!");
         }
 
-        System.out.print("Deseja mudar a quantidade de medalhas? [Y/N] ");
-
+        System.out.print("Deseja mudar a quantidade de medalhas? [s/n]: ");
+        sinal = Utils.entrada.nextLine().toLowerCase();
         try {
-            sinalizadorMedalha = Utils.entrada.nextLine();
-            if (sinalizadorMedalha == "y") {
+            if (sinal.equals("s")) {
                 this.adicionarMedalhasDoAtleta();
-            } else {
-                ;
-            }
+            } 
         } catch (Exception e) {
             System.out.println("Entrada válida apenas para texto!");
         }

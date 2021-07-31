@@ -50,11 +50,16 @@ public class Main {
                                 Utils.sinalizadora = false;
                                 ComiteOlimpico comite = new ComiteOlimpico();
                                 comite.adicionar();
+                                System.out.println("Comitê adicionado com sucesso!");
                                 break;
                             case 2: // REMOVER COMITÊ [ok]
                                 if (!ComiteOlimpico.getLista_comites().isEmpty()) {
                                     result = Utils.escolhaComite();
-                                    ComiteOlimpico.getLista_comites().get(result-1).removerComite(result-1);
+                                    if (ComiteOlimpico.getLista_comites().get(result-1).removerComite(result-1))
+                                        System.out.println("Comitê removido com sucesso!");
+                                    else
+                                        System.out.println("Comitê não removido!");
+                                    
                                     break;
                                 } else {
                                     System.out.println("Lista de comitês vazia.");
@@ -83,36 +88,46 @@ public class Main {
                     } while (opcao != 0);
                     break;
                 case 2: // GERENCIAR EQUIPE
-                    do {
+                    do {    
                         Utils.menu("Equipe");
-
-                        System.out.println("Entre com um opção: ");
-                        opcao = Utils.entrada.nextInt();
-                        Utils.entrada.nextLine();
-                        if (ComiteOlimpico.getLista_comites().isEmpty()) {
-                            System.out.println("Nenhum comitê cadastrado.");
-                            break;
+                        try {
+                        	System.out.println("Entre com um opção: ");
+                        	opcao = Utils.entrada.nextInt();
+                        	Utils.entrada.nextLine();
+                            if (opcao != 1 && ComiteOlimpico.getLista_comites().isEmpty()) {
+                                System.out.println("Lista de comitês vazia.");
+                                break;
+                            }
+                        	
+                        } catch(Exception e) {
+                        	System.out.println("Digite apenas números inteiros dentro das opções.");
+                        	Utils.entrada.nextLine();
+                        	continue;
                         }
+
                         switch (opcao) {
                             case 1: // ADICIONAR EQUIPE [ok]
                                 Utils.sinalizadora = false;
-                                result = Utils.escolhaComite2("equipe");
+                                result = Utils.escolhaComite("equipe");
                                 if (result == 0) {
                                     opcao = 0;
                                     break;
                                 }
                                 ComiteOlimpico.getLista_comites().get(result-1).adicionarEquipeAoComite();
+                                System.out.println("Equipe adicionada com sucesso!");
                                 break;
                             case 2: // REMOVER EQUIPE [ok]
                                 result = Utils.escolhaComite();
                                 i = Utils.escolherEquipe(result-1);
-                                ComiteOlimpico.getLista_comites().get(result-1).removerEquipeDoComite(i-1);
+                                if(ComiteOlimpico.getLista_comites().get(result-1).removerEquipeDoComite(i-1))
+                                    System.out.println("Equipe removida com sucesso!");
+                                else
+                                    System.out.println("Equipe não removida!");
                                 break;
                             case 3: // ALTERAR EQUIPE - Alysson
                                 result = Utils.escolhaComite();
                                 i = Utils.escolherEquipe(result-1);
-                                ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).alterarEquipe(result,
-                                        i);
+                                ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).alterarEquipe(result-1, i-1);
                                 break;
                             case 4: // LISTAR EQUIPE [ok]
                                 result = Utils.escolhaComite();
@@ -137,26 +152,34 @@ public class Main {
                 case 3: // GERENCIAR ATLETA
                     do {
                         Utils.menu("Atleta");
-
-                        System.out.println("Entre com um opção: ");
-                        opcao = Utils.entrada.nextInt();
-                        Utils.entrada.nextLine();
-                        result = Utils.escolhaComite2("atleta");
-                        //
-                        if (result != 0 || ComiteOlimpico.getLista_comites().isEmpty() || 
-                            ComiteOlimpico.getLista_comites().get(result-1).getEquipe().isEmpty()) {
+                        
+                        try {
+                        	System.out.println("Entre com um opção: ");
+                        	opcao = Utils.entrada.nextInt();
+                        	Utils.entrada.nextLine();
+                        } catch(Exception e) {
+                        	System.out.println("Digite apenas números inteiros dentro das opções.");
+                        	Utils.entrada.nextLine();
+                        	continue;
+                        }
+                        if(opcao != 5 && opcao != 0) 
+                            result = Utils.escolhaComite("atleta");
+                        else
+                            result = 0;
+                        if (result == 5 && (result != 0 || ComiteOlimpico.getLista_comites().isEmpty() || 
+                            ComiteOlimpico.getLista_comites().get(result-1).getEquipe().isEmpty())) {
                             System.out.println("Nenhuma Equipe cadastrada.");
                             break;
                         }
-                       
                         switch (opcao) {
                             case 1: // ADICIONAR ATLETA [ok]
-                                if (result == 0) {
+                                if (result == 0 || opcao == 0) {
                                     opcao = 0;
                                     break;
                                 }
                                 if (ComiteOlimpico.getLista_comites().get(result-1).elegerEquipeOndeAddAtleta(result-1)) {
                                     opcao = 0;
+                                    System.out.println("Adicionado com sucesso!");
                                     break;
                                 }
                                 System.out.println("Não foi possível adicionar o atleta.");
@@ -164,10 +187,12 @@ public class Main {
                             case 2: // REMOVER ATLETA [ok]
                                 i = Utils.escolherEquipe(result-1);
                                 j = Utils.escolherAtleta(result-1, i-1);
-                                ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1)
-                                        .removerAtletaDeEquipe(j-1);
+                                if(ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).removerAtletaDeEquipe(j-1))
+                                    System.out.println("Atleta removido com sucesso!");
+                                else
+                                    System.out.println("Atleta não removido!");
                                 break;
-                            case 3:
+                            case 3: // ALTERAR ATLETA [ok]
                                 i = Utils.escolherEquipe(result-1);
                                 j = Utils.escolherAtleta(result-1, i-1);
                                 ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).getAtletas().get(j-1)
@@ -197,41 +222,55 @@ public class Main {
 
                     break;
                 case 4:
-
                     do {
-                        Utils.menu("Comissão Técnica");
-
+                        Utils.menu("Técnico");
+                        try {
+                        	System.out.println("Entre com um opção: ");
+                        	opcao = Utils.entrada.nextInt();
+                        	Utils.entrada.nextLine();
+                        } catch(Exception e) {
+                        	System.out.println("Digite apenas números inteiros dentro das opções.");
+                        	Utils.entrada.nextLine();
+                        	continue;
+                        }
+                        if(opcao != 5 && opcao != 0) 
+                            result = Utils.escolhaComite("técnico");
+                        else
+                            result = 0;
+                        if (result == 5 && (ComiteOlimpico.getLista_comites().isEmpty() || 
+                            ComiteOlimpico.getLista_comites().get(result-1).getEquipe().isEmpty())) {
+                            System.out.println("Nenhuma Equipe cadastrada.");
+                            break;
+                        }
                         switch (opcao) {
                             case 1: // ADICIONAR Técnico [ok]
-                                result = Utils.escolhaComite2("técnico");
-                                if (result == 0) {
+                                if (result == 0 || opcao == 0) {
                                     opcao = 0;
                                     break;
                                 }
                                 if (ComiteOlimpico.getLista_comites().get(result-1).elegerEquipeOndeAddTecnico(result-1)) {
                                     opcao = 0;
+                                    System.out.println("Adicionado com sucesso!");
                                     break;
                                 }
                                 System.out.println("Não foi possível adicionar o técnico.");
 
                                 break;
                             case 2:// REMOVER Técnico [ok]
-                                result = Utils.escolhaComite();
                                 i = Utils.escolherEquipe(result-1);
                                 j = Utils.escolherTecnico(result-1, i-1);
-                                ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1)
-                                        .removerTecnicoDeEquipe(j-1);
+                                if (ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).removerTecnicoDeEquipe(j-1))
+                                    System.out.println("Removido com sucesso!");
+                                else
+                                    System.out.println("Não foi removido!");
                                 break;
                             case 3: // ALTERAR Técnico [ok]
-                                i = Utils.escolhaComite();
-                                j = Utils.escolherEquipe(i-1);
-                                result = Utils.escolherTecnico(i, j);
-                                ComiteOlimpico.getLista_comites().get(i-1).getEquipe().get(j-1).getComissaoTecnica()
-                                        .get(result-1).alterarTecnico(i, j, result);
+                                j = Utils.escolherEquipe(result-1);
+                                result = Utils.escolherTecnico(result-1, j-1);
+                                ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(j-1).getComissaoTecnica()
+                                        .get(result-1).alterarTecnico();
                                 break;
                             case 4: // LISTAR Técnico
-                                //
-                                result = Utils.escolhaComite();
                                 i = Utils.escolherEquipe(result-1);
                                 j = Utils.escolherTecnico(result-1, i-1);
                                 ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).getComissaoTecnica()

@@ -58,7 +58,7 @@ public class ComiteOlimpico implements OperacoesComuns {
 		this.pais = Utils.entrada.nextLine();
 
 		while (true) {
-			System.out.print("\nDeseja adicionar alguma equipe? digite... 's' ou 'n': ");
+			System.out.print("\nDeseja adicionar alguma equipe? [s/n]: ");
 			temporario = Utils.entrada.nextLine();
 
 			if (temporario.equalsIgnoreCase("s"))
@@ -73,33 +73,36 @@ public class ComiteOlimpico implements OperacoesComuns {
 	public boolean elegerEquipeOndeAddAtleta(int indice) {
 		int result;
 		for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {
-			System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+			System.out.printf("[%d] - %s\n", i+1, lista_comites.get(indice).equipes.get(i).getNome());
 		}
 		System.out.print("Digite o número da equipe que a(o) atleta pertence," + "\n"
 				+ "caso a equipe não esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
 		result = Utils.entrada.nextInt();
 		if (result == 0)
 			return false;
-		lista_comites.get(indice).equipes.get(result).adicionarAtletaEmEquipe();
+		Utils.entrada.nextLine();
+		lista_comites.get(indice).equipes.get(result-1).adicionarAtletaEmEquipe();
 		return true;
 	}
 
 	public boolean elegerEquipeOndeAddTecnico(int indice) {
 		int result;
 		for (int i = 0; i < lista_comites.get(indice).equipes.size(); i++) {
-			System.out.printf("[%d] - %s\n", i, lista_comites.get(indice).equipes.get(i).getNome());
+			System.out.printf("[%d] - %s\n", i+1, lista_comites.get(indice).equipes.get(i).getNome());
 		}
 		System.out.print("Digite o número da equipe que a(o) técnico pertence," + "\n"
 				+ "caso a equipe não esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
 		result = Utils.entrada.nextInt();
 		if (result == 0)
 			return false;
-		lista_comites.get(indice).equipes.get(result).adicionarTecnicoEmEquipe();
+		Utils.entrada.nextLine();
+		lista_comites.get(indice).equipes.get(result-1).adicionarTecnicoEmEquipe();
 		return true;
 	}
 
 	public boolean removerComite(int indice) {
 		return lista_comites.remove(lista_comites.get(indice));
+
 	}
 
 	public static ComiteOlimpico buscar(String nome) {
@@ -130,16 +133,18 @@ public class ComiteOlimpico implements OperacoesComuns {
 	public void alterarComite(int indice) {
 		ComiteOlimpico comite = lista_comites.get(indice);
 
-		System.out.println("Digite o novo nome do comitê: ");
-		Utils.entrada.nextLine();
+		System.out.printf("Digite o novo nome do comitê: ");
 		comite.setNome(Utils.entrada.nextLine());
 
-		System.out.println("Digite o novo país do comitê: ");
+		System.out.printf("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
 	}
 
-	public Equipe removerEquipeDoComite(int indice) {
-		return this.equipes.remove(indice);
+	public boolean removerEquipeDoComite(int indice) {
+		if (this.equipes.remove(indice) != null)
+			return true;
+		else
+			return false;
 	}
 
 	public static void listarAtletasDosComites() {

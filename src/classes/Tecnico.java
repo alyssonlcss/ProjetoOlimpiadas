@@ -52,17 +52,13 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 		System.out.println("Tecnico { \nnome=" + this.getNome() + ", " + "\ncargo=" + this.getCargo() + "\n");
 	}
 
-	public void alterarTecnico(int indice1, int indice2, int indice3) {
-		Tecnico tecnico = ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()
-				.get(indice3);
+	public void alterarTecnico() {
 
 		System.out.println("Digite o novo nome do técnico: ");
-		Utils.entrada.nextLine();
-		tecnico.setNome(Utils.entrada.nextLine());
+		this.setNome(Utils.entrada.nextLine());
 
 		System.out.println("Digite o novo cargo do técnico: ");
-		Utils.entrada.nextLine();
-		tecnico.setCargo(Utils.entrada.nextLine());
+		this.setCargo(Utils.entrada.nextLine());
 	}
 
 }

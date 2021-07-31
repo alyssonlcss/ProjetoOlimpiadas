@@ -1,8 +1,6 @@
 package classes;
 
 import java.util.ArrayList;
-
-
 import interfaces.OperacoesComuns;
 import lib.Utils;
 
@@ -80,7 +78,7 @@ public class Equipe implements OperacoesComuns{
 		}
 		
 		while (true) {
-			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? digite... 's' ou 'n': ");
+			System.out.printf("\nDeseja adicionar algum Atleta nessa Equipe? [s/n]: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("s"))      this.adicionarAtletaEmEquipe();
@@ -89,7 +87,7 @@ public class Equipe implements OperacoesComuns{
 		}
 		
 		while (true) {
-			System.out.printf("\nVocê deseja também adicionar um Técnico agora? digite... 's' ou 'n': ");
+			System.out.printf("\nVocê deseja também adicionar um Técnico agora? [s/n]: ");
 			temporario = Utils.entrada.nextLine();
 			
 			if (temporario.equalsIgnoreCase("s"))      this.adicionarTecnicoEmEquipe();
@@ -138,28 +136,40 @@ public class Equipe implements OperacoesComuns{
 
 	public void alterarEquipe(int index, int index2) {
 		int result = Utils.menuAlterarEquipe();
-		if(result == 1) {
-			System.out.printf("Novo nome da equipe: ");
-			this.nome = Utils.entrada.nextLine();
-		} else if(result == 2) {
-			System.out.printf("Nova modalidade da equipe: ");
-			this.modalidade = Utils.entrada.nextLine();
-		} else if(result == 3) {
-			atletas.get(Utils.escolherAtleta(index, index2)).alterarAtleta();
-		} else if(result == 4) {
-			int index3 = Utils.escolherTecnico(index, index2);
-			comissaoTecnica.get(index3).alterarTecnico(index, index2, index3);
-		} else {
-			System.out.println("Nenhuma alteração foi feita.");
+		try {
+			if(result == 1) {
+				System.out.printf("Novo nome da equipe: ");
+				this.nome = Utils.entrada.nextLine();
+			} else if(result == 2) {
+				System.out.printf("Nova modalidade da equipe: ");
+				this.modalidade = Utils.entrada.nextLine();
+			} else if(result == 3) {
+				result = Utils.escolherAtleta(index, index2);
+				this.atletas.get(result-1).alterarAtleta();
+			} else if(result == 4) {
+				result = Utils.escolherTecnico(index, index2);
+				this.comissaoTecnica.get(result-1).alterarTecnico();
+			} else if(result == 0) {
+				System.out.println("Nenhuma alteração foi feita.");
+			}
+		} catch(IndexOutOfBoundsException e) {
+				System.out.println("Digite apenas números inteiros dentro das opções.");
 		}
-
+		if(result > 0 && result < 5)
+			System.out.println("Alteração realizada com sucesso!");
 	}
 	
-	public Atleta removerAtletaDeEquipe(int indice) {
-		return this.atletas.remove(indice);
+	public boolean removerAtletaDeEquipe(int indice) {
+		if (this.atletas.remove(indice) != null)
+			return true;
+		else                                     
+			return false;	
 	}
 	
-	public Tecnico removerTecnicoDeEquipe(int indice) {
-		return this.comissaoTecnica.remove(indice);
+	public boolean removerTecnicoDeEquipe(int indice) {
+		if(this.comissaoTecnica.remove(indice) != null)
+			return true;
+		else
+			return false;
 	}
 }
