@@ -67,7 +67,7 @@ public class Utils {
 			System.out.println("Digite apenas números inteiros dentro das opções.");
 			return 0;
 		}
-	}
+	}//
 
 	public static int escolhaComite(String nome) {
 		int i = 1;
