@@ -26,9 +26,9 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 	@Override
 	public void adicionar() {
 
-		System.out.printf("Digite o nome do T�cnico: ");
+		System.out.printf("Digite o nome do Técnico: ");
 		this.nome = Utils.entrada.nextLine();
-		System.out.printf("Digite o cargo do T�cnico: ");
+		System.out.printf("Digite o cargo do Técnico: ");
 		this.cargo = Utils.entrada.nextLine();
 
 	}
@@ -52,17 +52,13 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 		System.out.println("Tecnico { \nnome=" + this.getNome() + ", " + "\ncargo=" + this.getCargo() + "\n");
 	}
 
-	public void alterarTecnico(int indice1, int indice2, int indice3) {
-		Tecnico tecnico = ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()
-				.get(indice3);
+	public void alterarTecnico() {
 
-		System.out.println("Digite o novo nome do t�cnico: ");
-		Utils.entrada.nextLine();
-		tecnico.setNome(Utils.entrada.nextLine());
+		System.out.println("Digite o novo nome do técnico: ");
+		this.setNome(Utils.entrada.nextLine());
 
-		System.out.println("Digite o novo cargo do t�cnico: ");
-		Utils.entrada.nextLine();
-		tecnico.setCargo(Utils.entrada.nextLine());
+		System.out.println("Digite o novo cargo do técnico: ");
+		this.setCargo(Utils.entrada.nextLine());
 	}
 
 }
