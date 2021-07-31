@@ -250,7 +250,7 @@ public class Main {
                                 }
                                 if (ComiteOlimpico.getLista_comites().get(result-1).elegerEquipeOndeAddTecnico(result-1)) {
                                     opcao = 0;
-                                    System.out.println("Adicionado com sucesso!");
+                                    System.out.println("Técnico adicionado com sucesso!");
                                     break;
                                 }
                                 System.out.println("Não foi possível adicionar o técnico.");
@@ -260,9 +260,9 @@ public class Main {
                                 i = Utils.escolherEquipe(result-1);
                                 j = Utils.escolherTecnico(result-1, i-1);
                                 if (ComiteOlimpico.getLista_comites().get(result-1).getEquipe().get(i-1).removerTecnicoDeEquipe(j-1))
-                                    System.out.println("Removido com sucesso!");
+                                    System.out.println("Técnico removido com sucesso!");
                                 else
-                                    System.out.println("Não foi removido!");
+                                    System.out.println("Técnico não foi removido!");
                                 break;
                             case 3: // ALTERAR Técnico [ok]
                                 j = Utils.escolherEquipe(result-1);
