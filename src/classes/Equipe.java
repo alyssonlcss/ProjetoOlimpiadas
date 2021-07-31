@@ -52,6 +52,28 @@ public class Equipe implements OperacoesComuns{
 		this.comissaoTecnica = comissaoTecnica;
 	}
 
+	public int getOuro() {
+		int qtt = 0;
+		for(int i = 0; i < atletas.size(); i++) {
+			qtt += atletas.get(i).getMedalhas().get(0);
+		}
+		return qtt;
+	}
+	public int getPrata() {
+		int qtt = 0;
+		for(int i = 0; i < atletas.size(); i++) {
+			qtt += atletas.get(i).getMedalhas().get(1);
+		}
+		return qtt;
+	}
+	public int getBronze() {
+		int qtt = 0;
+		for(int i = 0; i < atletas.size(); i++) {
+			qtt += atletas.get(i).getMedalhas().get(2);
+		}
+		return qtt;
+	}
+
 	@Override
 	public void adicionar() {
 		String temporario;
@@ -110,6 +132,12 @@ public class Equipe implements OperacoesComuns{
 	@Override
 	public void listarDados() {	
 		System.out.println("Equipe { \nnome=" + this.getNome() + ", " + "\nmodalidade=" + this.getModalidade() + "\n");
+
+		int qttQuro = getOuro(), qttPrata = getPrata(), qttBronze = getBronze();
+		System.out.println("Quantidade de medalhas de Ouro: " + qttQuro);
+		System.out.println("Quantidade de medalhas de Prata: " + qttPrata);
+		System.out.println("Quantidade de medalhas de Bronze: " + qttBronze);
+		System.out.println("TOTAL DE MEDALHAS: " + (qttQuro + qttPrata + qttBronze) + "\n");
 
 		for (Atleta atleta : atletas) {
 			System.out.println("\tAtleta { \n\tnome=" + atleta.getNome() + ", " + "\n\tSexo=" + atleta.getSexo() + "\n");

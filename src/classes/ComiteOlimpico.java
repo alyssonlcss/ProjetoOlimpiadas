@@ -48,6 +48,31 @@ public class ComiteOlimpico implements OperacoesComuns {
 		ComiteOlimpico.lista_comites = lista_comites;
 	}
 
+	public int getOuro() {
+		int qtt = 0, qtt2 = 0;
+		for(int i = 0; i < equipes.size(); i++) {
+			for(int j = 0; j < equipes.get(i).getO; j++) {
+				qtt += equipes.get(i).atletas.get()
+			}
+			qtt2 += qtt;
+		}
+		return qtt;
+	}
+	public int getPrata() {
+		int qtt = 0;
+		for(int i = 0; i < equipes.size(); i++) {
+			qtt += equipes.get(i).getAtletas().get(i).getOuro();
+		}
+		return qtt;
+	}
+	public int getBronze() {
+		int qtt = 0;
+		for(int i = 0; i < equipes.size(); i++) {
+			qtt += equipes.get(i).atletas().get(i);
+		}
+		return qtt;
+	}
+
 	@Override
 	public void adicionar() {
 		String temporario;
@@ -117,6 +142,13 @@ public class ComiteOlimpico implements OperacoesComuns {
 	@Override
 	public void listarDados() {
 		System.out.println("Nome do comitê = " + this.nome + " | País do Comitê = " + this.pais);
+
+		int qttQuro = getOuro(), qttPrata = getPrata(), qttBronze = getBronze();
+		System.out.println("Quantidade de medalhas de ouro do comitê: " + qttQuro);
+		System.out.println("Quantidade de medalhas de prata do comitê: " + qttPrata);
+		System.out.println("Quantidade de medalhas de bronze do comitê: " + qttBronze);
+		System.out.println("TOTAL DE MEDALHAS: " + (qttQuro + qttPrata + qttBronze) + "\n");
+
 		for (Equipe equipe : this.equipes) {
 			System.out.println(
 					"Equipe(s) { \nnome=" + equipe.getNome() + ", " + "\nmodalidade=" + equipe.getModalidade() + "\n");
@@ -147,6 +179,7 @@ public class ComiteOlimpico implements OperacoesComuns {
 			return false;
 	}
 
+	// ESSA FUNÇÃO NÃO É CHAMADA EM LUGAR ALGUM...
 	public static void listarAtletasDosComites() {
 		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
 			System.out.println("Comitê - " + comite.getNome());
