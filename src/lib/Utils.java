@@ -29,7 +29,7 @@ public class Utils {
 		System.out.println("[3] Alterar " + nome + ".");
 		System.out.println("[4] Listar " + nome + ".");
 		System.out.println("[5] Buscar " + nome + ".");
-		System.out.println("[0] VOLTAR.                  ");
+		System.out.println("[0] VOLTAR AO MENU PRINCIPAL");
 
 	}
 
@@ -51,20 +51,21 @@ public class Utils {
 	public static int escolhaComite() {
 		int i = 1;
 		try {
+			System.out.println("\nComitês cadastrados: ");
 			for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
 				System.out.printf("[%d] - %s\n", i, c.getNome());
 				i++;
 			}
          
-			System.out.print("Digite o número do comitê desejado: ");
+			System.out.print("\nDigite o número do comitê desejado: ");
 			i = Integer.parseInt(entrada.nextLine());
       ComiteOlimpico.getLista_comites().get(i-1);
 			return i;
 		} catch(NumberFormatException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		} catch(IndexOutOfBoundsException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		}
 	}//
@@ -72,12 +73,13 @@ public class Utils {
 	public static int escolhaComite(String nome) {
 		int i = 1;
 		try {
+			System.out.println("\nComitês cadastrados: ");
             for (ComiteOlimpico c : ComiteOlimpico.getLista_comites()) {
                 System.out.printf("[%d] - %s\n", i, c.getNome());
                 i++;
             }
             if (!ComiteOlimpico.getLista_comites().isEmpty()){
-                System.out.print("Digite o número do comitê que a(o) " + nome + " pertence," + "\n"
+                System.out.print("\nDigite o número do comitê que a(o) " + nome + " pertence," + "\n"
                     + "caso o comitê não esteja na lista, digite '0'." + "\n" + "Sua escolha: ");
                 i = Integer.parseInt(entrada.nextLine());
                 ComiteOlimpico.getLista_comites().get(i-1);
@@ -87,10 +89,10 @@ public class Utils {
 							return 0;
 						}
 		} catch(NumberFormatException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		} catch(IndexOutOfBoundsException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		}
 	}
@@ -100,20 +102,21 @@ public class Utils {
 		boolean sinalizador = true;
 		while (sinalizador) {
 			try {
+				System.out.println("\nEquipes cadastradas do comitê "+ ComiteOlimpico.getLista_comites().get(indice).getNome() +":");
 				for (Equipe equipe : ComiteOlimpico.getLista_comites().get(indice).getEquipe()) {
 					System.out.printf("[%d] - %s\n", i, equipe.getNome());
 					i++;
 				}
-				System.out.println("Digite o número da Equipe desejada: ");
+				System.out.println("\nDigite o número da Equipe desejada: ");
 				i = Integer.parseInt(entrada.nextLine());
 				ComiteOlimpico.getLista_comites().get(indice).getEquipe().get(i-1);
 				sinalizador = false;
 				return i;
 			} catch(NumberFormatException e) {
-				System.out.println("Digite apenas números inteiros dentro das opções.");
+				System.out.println("\nDigite apenas números inteiros dentro das opções.");
 				return 0;
 			} catch(IndexOutOfBoundsException e) {
-				System.out.println("Digite apenas números inteiros dentro das opções.");
+				System.out.println("\nDigite apenas números inteiros dentro das opções.");
 				return 0;
 			}
 		}
@@ -124,19 +127,21 @@ public class Utils {
 		int i = 1;
 		
 		try {
+			System.out.println("\nAtletas cadastrados do comitê "+ ComiteOlimpico.getLista_comites().get(indice1).getNome() + " e da equipe "+ 
+				ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getNome() + ": ");
 			for (Atleta atleta : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas()) {
 				System.out.printf("[%d] - %s\n", i, atleta.getNome());
 				i++;
 			}
-			System.out.println("Digite o número do Atleta desejado: ");
+			System.out.println("\nDigite o número do Atleta desejado: ");
 			i = Integer.parseInt(entrada.nextLine());
             ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getAtletas().get(i-1);
 			return i;
 		} catch(NumberFormatException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		} catch(IndexOutOfBoundsException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		}
 	}
@@ -144,19 +149,21 @@ public class Utils {
 	public static int escolherTecnico(int indice1, int indice2) {
 		int i = 1;
 		try {
+			System.out.println("\nTécnicos cadastrados do comitê "+ ComiteOlimpico.getLista_comites().get(indice1).getNome() + " e de equipe "+ 
+				ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getNome() + ": ");
 			for (Tecnico tecnico : ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica()) {
 				System.out.printf("[%d] - %s\n", i, tecnico.getNome());
 				i++;
 			}
-			System.out.println("Digite o número do técnico: ");
+			System.out.println("\nDigite o número do técnico: ");
 			i = Integer.parseInt(entrada.nextLine());
             ComiteOlimpico.getLista_comites().get(indice1).getEquipe().get(indice2).getComissaoTecnica().get(i-1);
 			return i;
 		} catch(NumberFormatException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		} catch(IndexOutOfBoundsException e) {
-			System.out.println("Digite apenas números inteiros dentro das opções.");
+			System.out.println("\nDigite apenas números inteiros dentro das opções.");
 			return 0;
 		}
 	}

@@ -49,26 +49,23 @@ public class ComiteOlimpico implements OperacoesComuns {
 	}
 
 	public int getOuro() {
-		int qtt = 0, qtt2 = 0;
+		int qtt = 0;
 		for(int i = 0; i < equipes.size(); i++) {
-			for(int j = 0; j < equipes.get(i).getO; j++) {
-				qtt += equipes.get(i).atletas.get()
-			}
-			qtt2 += qtt;
+			qtt += equipes.get(i).getOuro();
 		}
 		return qtt;
 	}
 	public int getPrata() {
 		int qtt = 0;
 		for(int i = 0; i < equipes.size(); i++) {
-			qtt += equipes.get(i).getAtletas().get(i).getOuro();
+			qtt += equipes.get(i).getPrata();
 		}
 		return qtt;
 	}
 	public int getBronze() {
 		int qtt = 0;
 		for(int i = 0; i < equipes.size(); i++) {
-			qtt += equipes.get(i).atletas().get(i);
+			qtt += equipes.get(i).getBronze();
 		}
 		return qtt;
 	}
@@ -170,6 +167,8 @@ public class ComiteOlimpico implements OperacoesComuns {
 
 		System.out.printf("Digite o novo país do comitê: ");
 		comite.setPais(Utils.entrada.nextLine());
+
+		System.out.println("Comitê alterado com sucesso!");
 	}
 
 	public boolean removerEquipeDoComite(int indice) {
