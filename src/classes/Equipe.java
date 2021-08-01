@@ -10,7 +10,6 @@ public class Equipe implements OperacoesComuns{
 	private String nome;
 	private String modalidade;
 	private Status status;
-	private ComiteOlimpico comite;
 	private ArrayList<Atleta> atletas = new ArrayList<>();
 	private ArrayList<Tecnico> comissaoTecnica = new ArrayList<>();
 	
@@ -37,15 +36,7 @@ public class Equipe implements OperacoesComuns{
 	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
-
-	public ComiteOlimpico getComite() {
-		return comite;
-	}
-
-	public void setComite(ComiteOlimpico comite) {
-		this.comite = comite;
-	}
-
+	
 	public ArrayList<Atleta> getAtletas() {
 		return atletas;
 	}
