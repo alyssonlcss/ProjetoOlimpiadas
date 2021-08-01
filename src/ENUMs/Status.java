@@ -1,4 +1,4 @@
-package classes;
+package ENUMs;
 
 public enum Status {
     MEDALHISTA,
