@@ -26,7 +26,7 @@ public class Equipe implements OperacoesComuns{
 		return modalidade;
 	}
 	
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	
@@ -94,13 +94,13 @@ public class Equipe implements OperacoesComuns{
 		this.modalidade = Utils.entrada.nextLine();
 		int temp = Utils.menuStatus();
 		if (temp == 1)
-            		this.setStatus(Status.MEDALHISTA);
-        	else if (temp == 2)
-           		 this.setStatus(Status.DESCLASSIFICADO);
-        	else if (temp == 3)
-            		this.setStatus(Status.EM_ANDAMENTO);
-       		else
-            		this.setStatus(Status.CLASSIFICADO);
+			this.setStatus(Status.MEDALHISTA);
+		else if (temp == 2)
+			this.setStatus(Status.DESCLASSIFICADO);
+		else if (temp == 3)
+			this.setStatus(Status.EM_ANDAMENTO);
+		else
+			this.setStatus(Status.CLASSIFICADO);
 		
 		if (Utils.sinalizadora) {
 			System.out.println("\nEscolha um comitê para adicionar sua equipe!");

@@ -48,7 +48,7 @@ public class Utils {
 		} 
 	}
 
-	public static int menuStatus(String nome) {
+	public static int menuStatus() {
 		System.out.println("\nMenu de Status:");
 		System.out.println("[1] MEDALISTA......");
 		System.out.println("[2] DESCLASSIFICADO..");
