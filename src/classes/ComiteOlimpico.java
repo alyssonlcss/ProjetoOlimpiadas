@@ -177,21 +177,4 @@ public class ComiteOlimpico implements OperacoesComuns {
 		else
 			return false;
 	}
-
-	// ESSA FUNÇÃO NÃO É CHAMADA EM LUGAR ALGUM...
-	public static void listarAtletasDosComites() {
-		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
-			System.out.println("Comitê - " + comite.getNome());
-			for (Equipe equipe : comite.getEquipe()) {
-				System.out.println("\tEquipe - " + equipe.getNome());
-				for (Atleta atleta : equipe.getAtletas()) {
-					System.out.println("Atleta { \nnome=" + atleta.getNome());
-					System.out.println("\t\tOuro -> " + atleta.getMedalhas().get(0));
-					System.out.println("\t\tPrata -> " + atleta.getMedalhas().get(1));
-					System.out.println("\t\tBronze -> " + atleta.getMedalhas().get(2));
-				}
-			}
-		}
-	}
-
 }
