@@ -34,7 +34,6 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 	}
 
 	public static Tecnico buscar(String nome) {
-
 		for (ComiteOlimpico comite : ComiteOlimpico.getLista_comites()) {
 			for (Equipe equipe : comite.getEquipe()) {
 				for (Tecnico tecnico : equipe.getComissaoTecnica()) {

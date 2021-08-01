@@ -48,6 +48,22 @@ public class Utils {
 		} 
 	}
 
+	public static int menuStatus(String nome) {
+		System.out.println("\nMenu de Status:");
+		System.out.println("[1] MEDALISTA......");
+		System.out.println("[2] DESCLASSIFICADO..");
+		System.out.println("[3] EM ANDAMENTO.....");
+		System.out.println("[4] CLASSIFICADO.....");
+
+		try {
+			System.out.printf("\nDigite o status da equipe: ");
+			return Integer.parseInt(entrada.nextLine());
+		} catch (NumberFormatException e) {
+			System.out.println("Você só pode digitar número referentes a opção.");
+			return 0;
+		}
+	}
+
 	public static int escolhaComite() {
 		int i = 1;
 		try {

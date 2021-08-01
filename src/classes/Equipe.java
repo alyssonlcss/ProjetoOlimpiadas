@@ -3,11 +3,13 @@ package classes;
 import java.util.ArrayList;
 import interfaces.OperacoesComuns;
 import lib.Utils;
+import ENUM's.Status;
 
 public class Equipe implements OperacoesComuns{
 	
 	private String nome;
 	private String modalidade;
+	private Status status;
 	private ComiteOlimpico comite;
 	private ArrayList<Atleta> atletas = new ArrayList<>();
 	private ArrayList<Tecnico> comissaoTecnica = new ArrayList<>();
@@ -24,10 +26,18 @@ public class Equipe implements OperacoesComuns{
 		return modalidade;
 	}
 	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	public Status getStatus() {
+		return this.status;
+	}
+	
 	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
-	
+
 	public ComiteOlimpico getComite() {
 		return comite;
 	}
@@ -78,11 +88,19 @@ public class Equipe implements OperacoesComuns{
 	public void adicionar() {
 		String temporario;
 		
-		System.out.printf("Digite o nome da Equipe: ");
+		System.out.printf("Digite o nome da equipe: ");
 		this.nome = Utils.entrada.nextLine();
-		System.out.printf("Digite a modalidade da Equipe: ");
+		System.out.printf("Digite a modalidade da equipe: ");
 		this.modalidade = Utils.entrada.nextLine();
-		
+		int temp = Utils.menuStatus();
+		if (temp == 1)
+			this.status = MEDALHISTA;
+		else if (temp == 2)
+			this.status = DESCLASSIFICADO;
+		else if (temp == 3)
+			this.status = EM_ANDAMENTO;
+		else
+			this.status = CLASSIFICADO;
 		
 		if (Utils.sinalizadora) {
 			System.out.println("\nEscolha um comitê para adicionar sua equipe!");
@@ -131,8 +149,7 @@ public class Equipe implements OperacoesComuns{
 
 	@Override
 	public void listarDados() {	
-		System.out.println("Equipe { \nnome=" + this.getNome() + ", " + "\nmodalidade=" + this.getModalidade() + "\n");
-
+		System.out.println("Equipe { \nNome = " + this.getNome() + ", " + "\nModalidade = " + this.getModalidade() + "\nStatus = " + this.getStatus() + "\n");
 		int qttQuro = getOuro(), qttPrata = getPrata(), qttBronze = getBronze();
 		System.out.println("Quantidade de medalhas de Ouro: " + qttQuro);
 		System.out.println("Quantidade de medalhas de Prata: " + qttPrata);
@@ -140,11 +157,11 @@ public class Equipe implements OperacoesComuns{
 		System.out.println("TOTAL DE MEDALHAS: " + (qttQuro + qttPrata + qttBronze) + "\n");
 
 		for (Atleta atleta : atletas) {
-			System.out.println("\tAtleta { \n\tnome=" + atleta.getNome() + ", " + "\n\tSexo=" + atleta.getSexo() + "\n");
+			System.out.println("   Atleta { \n   nome = " + atleta.getNome() + ", " + "\n   Sexo = " + atleta.getSexo() + "\n");
 		}
 		System.out.println("\n\t}");
 		for (Tecnico tecnico : comissaoTecnica) {
-			System.out.println("\tTécnico { \n\tnome=" + tecnico.getNome() + ", " + "\n\tCargo=" + tecnico.getCargo() + "\n");
+			System.out.println("   Técnico { \n   nome = " + tecnico.getNome() + ", " + "\n   Cargo = " + tecnico.getCargo() + "\n");
 		}
 		System.out.println("\n\t}");
 		System.out.println("}");
