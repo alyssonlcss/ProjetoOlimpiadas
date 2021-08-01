@@ -3,7 +3,7 @@ package classes;
 import java.util.ArrayList;
 import interfaces.OperacoesComuns;
 import lib.Utils;
-import ENUM's.Status;
+import ENUMs.Status;
 
 public class Equipe implements OperacoesComuns{
 	
@@ -94,13 +94,13 @@ public class Equipe implements OperacoesComuns{
 		this.modalidade = Utils.entrada.nextLine();
 		int temp = Utils.menuStatus();
 		if (temp == 1)
-			this.status = MEDALHISTA;
-		else if (temp == 2)
-			this.status = DESCLASSIFICADO;
-		else if (temp == 3)
-			this.status = EM_ANDAMENTO;
-		else
-			this.status = CLASSIFICADO;
+            this.setStatus(Status.MEDALHISTA);
+        else if (temp == 2)
+            this.setStatus(Status.DESCLASSIFICADO);
+        else if (temp == 3)
+            this.setStatus(Status.EM_ANDAMENTO);
+        else
+            this.setStatus(Status.CLASSIFICADO);
 		
 		if (Utils.sinalizadora) {
 			System.out.println("\nEscolha um comitê para adicionar sua equipe!");
@@ -182,6 +182,7 @@ public class Equipe implements OperacoesComuns{
 	public void alterarEquipe(int index, int index2) {
 		int result = Utils.menuAlterarEquipe();
 		try {
+			
 			if(result == 1) {
 				System.out.printf("Novo nome da equipe: ");
 				this.nome = Utils.entrada.nextLine();
