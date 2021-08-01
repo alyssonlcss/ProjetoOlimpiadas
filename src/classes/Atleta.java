@@ -55,7 +55,7 @@ public class Atleta extends CredenciadoOlimpico implements OperacoesComuns {
 
     @Override
     public void listarDados() {
-        System.out.println("Atleta { \nnome=" + this.getNome() + ", " + "\nID = " + this.getId() + ", " + "\nsexo=" + this.getSexo() + "\n");
+        System.out.println("Atleta { \nnome=" + super.getNome() + ", " + "\nID = " + super.getId() + ", " + "\nsexo=" + this.getSexo() + "\n");
 
         System.out.println("   Medalhas { \n   Ouro = " + this.getMedalhas().get(0) + ", " + "\n   Prata = "
             + this.getMedalhas().get(1) + ", " + "\n   Bronze = " + this.getMedalhas().get(2) + "\n");

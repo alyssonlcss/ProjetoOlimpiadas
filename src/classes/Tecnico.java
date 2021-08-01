@@ -1,19 +1,12 @@
 package classes;
 
+import java.util.Random;
+
 import interfaces.OperacoesComuns;
 import lib.Utils;
 
 public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
-	private String nome;
 	private String cargo;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getCargo() {
 		return cargo;
@@ -27,10 +20,10 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 	public void adicionar() {
 
 		System.out.printf("Digite o nome do Técnico: ");
-		this.nome = Utils.entrada.nextLine();
+		super.setNome(Utils.entrada.nextLine());
+		super.setId(new Random().nextInt(30000));
 		System.out.printf("Digite o cargo do Técnico: ");
 		this.cargo = Utils.entrada.nextLine();
-
 	}
 
 	public static Tecnico buscar(String nome) {
@@ -48,7 +41,7 @@ public class Tecnico extends CredenciadoOlimpico implements OperacoesComuns {
 
 	@Override
 	public void listarDados() {
-		System.out.println("Tecnico { \nnome=" + this.getNome() + ", " + "\ncargo=" + this.getCargo() + "\n");
+		System.out.println("Tecnico { \nnome=" + super.getNome() + ", " + "\nID = " + super.getId() + ", " + "\ncargo=" + this.getCargo() + "\n");
 	}
 
 	public void alterarTecnico() {
